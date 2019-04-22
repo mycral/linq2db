@@ -364,7 +364,7 @@ namespace LinqToDB.DataProvider.Informix
 				from fk in dataConnection.Query(
 					rd =>
 					{
-						var arr = new string[16][];
+						var arr = new string?[16][];
 
 						for (var i = 0; i < arr.Length; i++)
 						{

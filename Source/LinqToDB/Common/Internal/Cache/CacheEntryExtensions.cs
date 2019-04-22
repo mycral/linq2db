@@ -104,7 +104,7 @@ namespace LinqToDB.Common.Internal.Cache
         public static ICacheEntry RegisterPostEvictionCallback(
             this ICacheEntry entry,
             PostEvictionDelegate callback,
-            object state)
+            object? state)
         {
             if (callback == null)
             {

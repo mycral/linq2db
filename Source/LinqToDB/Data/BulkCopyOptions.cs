@@ -60,16 +60,16 @@ namespace LinqToDB.Data
 		/// Gets or sets explicit name of target database instead of one, configured for copied entity in mapping schema.
 		/// See <see cref="LinqExtensions.DatabaseName{T}(ITable{T}, string)"/> method for support information per provider.
 		/// </summary>
-		public string       DatabaseName           { get; set; }
+		public string?      DatabaseName           { get; set; }
 		/// <summary>
 		/// Gets or sets explicit name of target schema/owner instead of one, configured for copied entity in mapping schema.
 		/// See <see cref="LinqExtensions.SchemaName{T}(ITable{T}, string)"/> method for support information per provider.
 		/// </summary>
-		public string       SchemaName             { get; set; }
+		public string?      SchemaName             { get; set; }
 		/// <summary>
 		/// Gets or sets explicit name of target table instead of one, configured for copied entity in mapping schema.
 		/// </summary>
-		public string       TableName              { get; set; }
+		public string?      TableName              { get; set; }
 
 		/// <summary>
 		/// Gets or sets counter after how many copied records <see cref="RowsCopiedCallback"/> should be called.
@@ -82,6 +82,6 @@ namespace LinqToDB.Data
 		/// Gets or sets callback method that will be called by BulkCopy operation after each <see cref="NotifyAfter"/> rows copied.
 		/// This callback will not be used if <see cref="NotifyAfter"/> set to 0.
 		/// </summary>
-		public Action<BulkCopyRowsCopied> RowsCopiedCallback { get; set; }
+		public Action<BulkCopyRowsCopied>? RowsCopiedCallback { get; set; }
 	}
 }

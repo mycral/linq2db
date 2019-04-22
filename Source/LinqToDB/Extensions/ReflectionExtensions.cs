@@ -160,7 +160,7 @@ namespace LinqToDB.Extensions
 		/// <param name="type"><see cref="Type"/> to find member info</param>
 		/// <param name="memberInfo"><see cref="MemberInfo"/> </param>
 		/// <returns><see cref="MemberInfo"/> or null</returns>
-		public static MemberInfo GetMemberEx(this Type type, MemberInfo memberInfo)
+		public static MemberInfo? GetMemberEx(this Type type, MemberInfo memberInfo)
 		{
 			if (memberInfo.IsPropertyEx())
 				return type.GetPropertyEx(memberInfo.Name);
@@ -174,7 +174,7 @@ namespace LinqToDB.Extensions
 			return null;
 		}
 
-		public static MethodInfo GetMethodEx(this Type type, string name, params Type[] types)
+		public static MethodInfo? GetMethodEx(this Type type, string name, params Type[] types)
 		{
 #if NETSTANDARD1_6
 			// https://github.com/dotnet/corefx/issues/12921
@@ -331,7 +331,7 @@ namespace LinqToDB.Extensions
 			return memberInfo.MemberType == MemberTypes.Method;
 		}
 
-		private static readonly MemberInfo SQLPropertyMethod = MemberHelper.MethodOf(() => Sql.Property<string>(null, null)).GetGenericMethodDefinition();
+		private static readonly MemberInfo SQLPropertyMethod = MemberHelper.MethodOf(() => Sql.Property<string>(null!, null!)).GetGenericMethodDefinition();
 
 		/// <summary>
 		/// Determines whether member info represent a Sql.Property method.
@@ -428,7 +428,7 @@ namespace LinqToDB.Extensions
 			return type.GetConstructor(parameterTypes);
 		}
 
-		public static PropertyInfo GetPropertyEx(this Type type, string propertyName)
+		public static PropertyInfo? GetPropertyEx(this Type type, string propertyName)
 		{
 			return type.GetProperty(propertyName);
 		}
@@ -561,9 +561,7 @@ namespace LinqToDB.Extensions
 		{
 			if (type == null) throw new ArgumentNullException("type");
 
-			T[] attrs;
-
-			if (!CacheHelper<T>.TypeAttributes.TryGetValue(type, out attrs))
+			if (!CacheHelper<T>.TypeAttributes.TryGetValue(type, out var attrs))
 			{
 				var list = new List<object>();
 
@@ -583,7 +581,7 @@ namespace LinqToDB.Extensions
 		/// Only attributes that are assignable to this type are returned.</typeparam>
 		/// <returns>A reference to the first custom attribute of type attributeType
 		/// that is applied to element, or null if there is no such attribute.</returns>
-		public static T GetFirstAttribute<T>([NotNull] this Type type)
+		public static T? GetFirstAttribute<T>([NotNull] this Type type)
 			where T : Attribute
 		{
 			var attrs = GetAttributes<T>(type);
@@ -758,7 +756,7 @@ namespace LinqToDB.Extensions
 			}
 		}
 
-		public static Type GetGenericType([NotNull] this Type genericType, Type type)
+		public static Type? GetGenericType([NotNull] this Type genericType, Type type)
 		{
 			if (genericType == null) throw new ArgumentNullException("genericType");
 
@@ -803,7 +801,7 @@ namespace LinqToDB.Extensions
 
 			if (list is IList || list is ITypedList || list is IListSource)
 			{
-				PropertyInfo last = null;
+				PropertyInfo? last = null;
 
 				foreach (var pi in type.GetPropertiesEx())
 				{
@@ -860,7 +858,7 @@ namespace LinqToDB.Extensions
 				if (elementType != null)
 					return elementType;
 
-				PropertyInfo last = null;
+				PropertyInfo? last = null;
 
 				foreach (var pi in listType.GetPropertiesEx())
 				{
@@ -880,7 +878,7 @@ namespace LinqToDB.Extensions
 			return typeof(object);
 		}
 
-		public static Type GetItemType(this Type type)
+		public static Type? GetItemType(this Type type)
 		{
 			if (type == null)
 				return null;
@@ -946,7 +944,7 @@ namespace LinqToDB.Extensions
 		///<param name="baseType">Non generic base type.</param>
 		///<returns>An array of Type objects that represent the type arguments
 		/// of a generic type. Returns an empty array if the current type is not a generic type.</returns>
-		public static Type[] GetGenericArguments(this Type type, Type baseType)
+		public static Type[]? GetGenericArguments(this Type type, Type baseType)
 		{
 			var baseTypeName = baseType.Name;
 
@@ -1022,18 +1020,18 @@ namespace LinqToDB.Extensions
 
 		interface IGetDefaultValueHelper
 		{
-			object GetDefaultValue();
+			object? GetDefaultValue();
 		}
 
 		class GetDefaultValueHelper<T> : IGetDefaultValueHelper
 		{
-			public object GetDefaultValue()
+			public object? GetDefaultValue()
 			{
 				return default(T);
 			}
 		}
 
-		public static object GetDefaultValue(this Type type)
+		public static object? GetDefaultValue(this Type type)
 		{
 			var dtype  = typeof(GetDefaultValueHelper<>).MakeGenericType(type);
 			var helper = (IGetDefaultValueHelper)Activator.CreateInstance(dtype);
@@ -1050,7 +1048,7 @@ namespace LinqToDB.Extensions
 
 		#region MethodInfo extensions
 
-		public static PropertyInfo GetPropertyInfo(this MethodInfo method)
+		public static PropertyInfo? GetPropertyInfo(this MethodInfo method)
 		{
 			if (method != null)
 			{
@@ -1143,7 +1141,7 @@ namespace LinqToDB.Extensions
 			return false;
 		}
 
-		public static bool EqualsTo(this MemberInfo member1, MemberInfo member2, Type declaringType = null)
+		public static bool EqualsTo(this MemberInfo member1, MemberInfo member2, Type? declaringType = null)
 		{
 			if (ReferenceEquals(member1, member2))
 				return true;

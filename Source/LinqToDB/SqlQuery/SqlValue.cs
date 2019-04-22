@@ -13,13 +13,13 @@ namespace LinqToDB.SqlQuery
 			Value      = value;
 		}
 
-		public SqlValue(DbDataType valueType, object value)
+		public SqlValue(DbDataType valueType, object? value)
 		{
 			ValueType  = valueType;
 			Value      = value;
 		}
 
-		public SqlValue(object value)
+		public SqlValue(object? value)
 		{
 			Value = value;
 
@@ -27,7 +27,7 @@ namespace LinqToDB.SqlQuery
 				ValueType = new DbDataType(value.GetType());
 		}
 
-		public   object     Value      { get; internal set; }
+		public   object?    Value      { get; internal set; }
 		public   DbDataType ValueType  { get; set; }
 		public   Type       SystemType => ValueType.SystemType;
 

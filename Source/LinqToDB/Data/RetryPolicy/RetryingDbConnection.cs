@@ -134,7 +134,7 @@ namespace LinqToDB.Data.RetryPolicy
 			return _connection.CloseAsync(cancellationToken);
 		}
 
-		public IAsyncDbConnection TryClone()
+		public IAsyncDbConnection? TryClone()
 		{
 			return AsyncFactory.Create((IDbConnection)Clone());
 		}

@@ -6,7 +6,7 @@ namespace LinqToDB.SqlQuery
 {
 	public class SqlParameter : ISqlExpression, IValueContainer
 	{
-		public SqlParameter(Type systemType, string name, object value)
+		public SqlParameter(Type systemType, string name, object?value)
 		{
 			IsQueryParameter = true;
 			Name             = name;
@@ -15,7 +15,7 @@ namespace LinqToDB.SqlQuery
 			DataType         = DataType.Undefined;
 		}
 
-		public SqlParameter(Type systemType, string name, object value, Func<object,object> valueConverter)
+		public SqlParameter(Type systemType, string name, object? value, Func<object?,object?>? valueConverter)
 			: this(systemType, name, value)
 		{
 			_valueConverter = valueConverter;
@@ -31,8 +31,8 @@ namespace LinqToDB.SqlQuery
 		public string   LikeEnd          { get; set; }
 		public bool     ReplaceLike      { get; set; }
 
-		private object _value;
-		public  object  Value
+		private object? _value;
+		public  object?  Value
 		{
 			get
 			{
@@ -60,14 +60,14 @@ namespace LinqToDB.SqlQuery
 			set => _value = value;
 		}
 
-		internal object RawValue => _value;
+		internal object? RawValue => _value;
 
 		#region Value Converter
 
 		internal List<int>  TakeValues;
 
-		private Func<object,object> _valueConverter;
-		public  Func<object,object>  ValueConverter
+		private Func<object?,object?>? _valueConverter;
+		public  Func<object?,object?>?  ValueConverter
 		{
 			get
 			{
@@ -162,8 +162,7 @@ namespace LinqToDB.SqlQuery
 			if (this == other)
 				return true;
 
-			var p = other as SqlParameter;
-			return (object)p != null && Name != null && p.Name != null && Name == p.Name && SystemType == p.SystemType;
+			return other is SqlParameter p && Name != null && p.Name != null && Name == p.Name && SystemType == p.SystemType;
 		}
 
 		#endregion

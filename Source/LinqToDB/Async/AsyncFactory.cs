@@ -30,7 +30,7 @@ namespace LinqToDB.Async
 
 		// disable warning from .net core 2.1 tools (compiler bug)
 #pragma warning disable 4014
-		private static readonly MethodInfo _transactionWrap = MemberHelper.MethodOf(() => Wrap<IDbTransaction>(default)).GetGenericMethodDefinition();
+		private static readonly MethodInfo _transactionWrap = MemberHelper.MethodOf(() => Wrap<IDbTransaction>(default!)).GetGenericMethodDefinition();
 #pragma warning restore 4014
 
 		/// <summary>
@@ -125,7 +125,7 @@ namespace LinqToDB.Async
 			return connection => new AsyncDbConnection(connection);
 		}
 
-		private static TDelegate CreateDelegate<TDelegate, TInstance>(
+		private static TDelegate? CreateDelegate<TDelegate, TInstance>(
 			Type   instanceType,
 			string methodName,
 			Type[] parametersTypes,
@@ -147,7 +147,7 @@ namespace LinqToDB.Async
 				.Compile();
 		}
 
-		private static TDelegate CreateTaskTDelegate<TDelegate, TInstance, TTask>(
+		private static TDelegate? CreateTaskTDelegate<TDelegate, TInstance, TTask>(
 			Type       instanceType,
 			string     methodName,
 			Type[]     parametersTypes,

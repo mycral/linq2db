@@ -1053,7 +1053,7 @@ namespace LinqToDB.Data
 		/// </summary>
 		public string LastQuery;
 
-		internal void InitCommand(CommandType commandType, string sql, DataParameter[] parameters, List<string> queryHints)
+		internal void InitCommand(CommandType commandType, string sql, DataParameter[]? parameters, List<string>? queryHints)
 		{
 			if (queryHints?.Count > 0)
 			{

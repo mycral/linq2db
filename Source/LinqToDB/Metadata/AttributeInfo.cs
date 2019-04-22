@@ -10,14 +10,14 @@ namespace LinqToDB.Metadata
 
 	class AttributeInfo
 	{
-		public AttributeInfo(string name, Dictionary<string,object> values)
+		public AttributeInfo(string name, Dictionary<string,object?> values)
 		{
 			Name   = name;
 			Values = values;
 		}
 
-		public string                    Name;
-		public Dictionary<string,object> Values;
+		public string                     Name;
+		public Dictionary<string,object?> Values;
 
 		Func<Attribute> _func;
 

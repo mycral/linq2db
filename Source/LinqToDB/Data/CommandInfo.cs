@@ -28,15 +28,15 @@ namespace LinqToDB.Data
 		/// <summary>
 		/// Instance of database connection, associated with command.
 		/// </summary>
-		public DataConnection  DataConnection;
+		public DataConnection   DataConnection;
 		/// <summary>
 		/// Command text.
 		/// </summary>
-		public string          CommandText;
+		public string           CommandText;
 		/// <summary>
 		/// Command parameters.
 		/// </summary>
-		public DataParameter[] Parameters;
+		public DataParameter[]? Parameters;
 		/// <summary>
 		/// Type of command. See <see cref="System.Data.CommandType"/> for all supported types.
 		/// Default value: <see cref="System.Data.CommandType.Text"/>.

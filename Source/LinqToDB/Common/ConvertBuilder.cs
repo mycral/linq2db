@@ -14,7 +14,7 @@ namespace LinqToDB.Common
 
 	static class ConvertBuilder
 	{
-		static readonly MethodInfo _defaultConverter = MemberHelper.MethodOf(() => ConvertDefault(null, typeof(int)));
+		static readonly MethodInfo _defaultConverter = MemberHelper.MethodOf(() => ConvertDefault(null!, typeof(int)));
 
 		static object ConvertDefault(object value, Type conversionType)
 		{
@@ -47,7 +47,7 @@ namespace LinqToDB.Common
 			return Expression.New(ctor, p);
 		}
 
-		static Expression GetValue(Type from, Type to, Expression p)
+		static Expression? GetValue(Type from, Type to, Expression p)
 		{
 			var pi = from.GetPropertyEx("Value");
 
@@ -64,7 +64,7 @@ namespace LinqToDB.Common
 			return pi.PropertyType == to ? Expression.Property(p, pi) : null;
 		}
 
-		static Expression GetOperator(Type from, Type to, Expression p)
+		static Expression? GetOperator(Type from, Type to, Expression p)
 		{
 			var op =
 				to.GetMethodEx("op_Implicit", from) ??
@@ -97,7 +97,7 @@ namespace LinqToDB.Common
 			}
 		}
 
-		static Expression GetConvertion(Type from, Type to, Expression p)
+		static Expression? GetConvertion(Type from, Type to, Expression p)
 		{
 			if (IsConvertible(from) && IsConvertible(to) && to != typeof(bool) ||
 				from.IsAssignableFromEx(to) && to.IsAssignableFromEx(from))
@@ -106,7 +106,7 @@ namespace LinqToDB.Common
 		 	return null;
 		}
 
-		static Expression GetParse(Type from, Type to, Expression p)
+		static Expression? GetParse(Type from, Type to, Expression p)
 		{
 			if (from == typeof(string))
 			{
@@ -131,7 +131,7 @@ namespace LinqToDB.Common
 			return null;
 		}
 
-		static Expression GetToString(Type from, Type to, Expression p)
+		static Expression? GetToString(Type from, Type to, Expression p)
 		{
 			if (to == typeof(string) && !from.IsNullable())
 			{
@@ -142,7 +142,7 @@ namespace LinqToDB.Common
 			return null;
 		}
 
-		static Expression GetParseEnum(Type from, Type to, Expression p)
+		static Expression? GetParseEnum(Type from, Type to, Expression p)
 		{
 			if (from == typeof(string) && to.IsEnumEx())
 			{
@@ -202,7 +202,7 @@ namespace LinqToDB.Common
 
 		static readonly MethodInfo _throwLinqToDBConvertException = MemberHelper.MethodOf(() => ThrowLinqToDBException(null));
 
-		static Expression GetToEnum(Type from, Type to, Expression expression, MappingSchema mappingSchema)
+		static Expression? GetToEnum(Type from, Type to, Expression expression, MappingSchema mappingSchema)
 		{
 			if (to.IsEnumEx())
 			{
@@ -438,7 +438,7 @@ namespace LinqToDB.Common
 			return null;
 		}
 
-		static Tuple<Expression,bool> GetConverter(MappingSchema mappingSchema, Expression expr, Type from, Type to)
+		static Tuple<Expression,bool>? GetConverter(MappingSchema mappingSchema, Expression expr, Type from, Type to)
 		{
 			if (from == to)
 				return Tuple.Create(expr, false);
@@ -477,13 +477,13 @@ namespace LinqToDB.Common
 			return ex != null ? Tuple.Create(ex, false) : null;
 		}
 
-		static Tuple<Expression,bool> ConvertUnderlying(
+		static Tuple<Expression,bool>? ConvertUnderlying(
 			MappingSchema mappingSchema,
 			Expression    expr,
 			Type from, Type ufrom,
 			Type to,   Type uto)
 		{
-			Tuple<Expression,bool> ex = null;
+			Tuple<Expression,bool>? ex = null;
 
 			if (from != ufrom)
 			{
@@ -513,7 +513,7 @@ namespace LinqToDB.Common
 			return ex;
 		}
 
-		public static Tuple<LambdaExpression,LambdaExpression,bool> GetConverter(MappingSchema mappingSchema, Type from, Type to)
+		public static Tuple<LambdaExpression,LambdaExpression?,bool> GetConverter(MappingSchema? mappingSchema, Type from, Type to)
 		{
 			if (mappingSchema == null)
 				mappingSchema = MappingSchema.Default;
@@ -579,7 +579,7 @@ namespace LinqToDB.Common
 
 		#region Default Enum Mapping Type
 
-		public static Type GetDefaultMappingFromEnumType(MappingSchema mappingSchema, Type enumType)
+		public static Type? GetDefaultMappingFromEnumType(MappingSchema mappingSchema, Type enumType)
 		{
 			var type = enumType.ToNullableUnderlying();
 
@@ -600,7 +600,7 @@ namespace LinqToDB.Common
 				).ToList()
 			).ToList();
 
-			Type defaultType = null;
+			Type? defaultType = null;
 
 			if (fields.All(attrs => attrs.Count != 0))
 			{

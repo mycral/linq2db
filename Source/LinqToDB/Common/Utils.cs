@@ -9,7 +9,7 @@ namespace LinqToDB.Common
 	public static class Utils
 	{
 		public static void MakeUniqueNames<T>([NotNull] IEnumerable<T> items, IEnumerable<string> staticNames, [NotNull] Func<T, string> nameFunc,
-			[NotNull] Action<T, string> nameSetter, string defaultName = "t", StringComparer comparer = null)
+			[NotNull] Action<T, string> nameSetter, string defaultName = "t", StringComparer? comparer = null)
 		{
 			if (items      == null) throw new ArgumentNullException(nameof(items));
 			if (nameFunc   == null) throw new ArgumentNullException(nameof(nameFunc));
@@ -23,7 +23,7 @@ namespace LinqToDB.Common
 		}
 
 		public static void MakeUniqueNames<T>([NotNull] IEnumerable<T> items, IEnumerable<string> staticNames, [NotNull] Func<T, string> nameFunc,
-			[NotNull] Action<T, string> nameSetter, [NotNull] Func<T, string> defaultName, StringComparer comparer = null)
+			[NotNull] Action<T, string> nameSetter, [NotNull] Func<T, string> defaultName, StringComparer? comparer = null)
 		{
 			if (staticNames != null)
 			{
@@ -37,7 +37,7 @@ namespace LinqToDB.Common
 		}
 
 		public static void MakeUniqueNames<T>([NotNull] IEnumerable<T> items, [NotNull] Func<string, bool> validatorFunc, [NotNull] Func<T, string> nameFunc,
-			[NotNull] Action<T, string> nameSetter, [NotNull] Func<T, string> defaultName, StringComparer comparer = null)
+			[NotNull] Action<T, string> nameSetter, [NotNull] Func<T, string> defaultName, StringComparer? comparer = null)
 		{
 			if (items         == null) throw new ArgumentNullException(nameof(items));
 			if (validatorFunc == null) throw new ArgumentNullException(nameof(validatorFunc));

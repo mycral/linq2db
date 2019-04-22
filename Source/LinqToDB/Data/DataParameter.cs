@@ -23,7 +23,7 @@ namespace LinqToDB.Data
 			Value = value;
 		}
 
-		public DataParameter(string name, object value, DataType dataType)
+		public DataParameter(string name, object? value, DataType dataType)
 		{
 			Name     = name;
 			Value    = value;
@@ -60,7 +60,7 @@ namespace LinqToDB.Data
 		/// <returns>
 		/// Name of Database Type or empty string.
 		/// </returns>
-		public string DbType { get; set; }
+		public string? DbType { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether the parameter is input-only, output-only, bidirectional, or a stored procedure return value parameter.
@@ -86,7 +86,7 @@ namespace LinqToDB.Data
 		/// <returns>
 		/// The name of the <see cref="T:LinqToDB.Data.DataParameter"/>. The default is an empty string.
 		/// </returns>
-		public string Name { get; set; }
+		public string? Name { get; set; }
 
 		public bool IsArray { get; set; }
 
@@ -127,7 +127,7 @@ namespace LinqToDB.Data
 		/// <returns>
 		/// An <see cref="T:System.Object"/> that is the value of the parameter. The default value is null.
 		/// </returns>
-		public object Value { get; set; }
+		public object? Value { get; set; }
 
 		public static DataParameter Char          (string name, char           value) { return new DataParameter { DataType = DataType.Char,           Name = name, Value = value, }; }
 		public static DataParameter Char          (string name, string         value) { return new DataParameter { DataType = DataType.Char,           Name = name, Value = value, }; }

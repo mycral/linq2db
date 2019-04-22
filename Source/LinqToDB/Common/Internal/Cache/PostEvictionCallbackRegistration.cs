@@ -7,6 +7,6 @@ namespace LinqToDB.Common.Internal.Cache
     {
         public PostEvictionDelegate EvictionCallback { get; set; }
 
-        public object State { get; set; }
+        public object? State { get; set; }
     }
 }

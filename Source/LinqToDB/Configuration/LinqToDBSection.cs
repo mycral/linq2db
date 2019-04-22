@@ -27,7 +27,7 @@ namespace LinqToDB.Configuration
 		/// <summary>
 		/// linq2db configuration section.
 		/// </summary>
-		public  static LinqToDBSection  Instance
+		public  static LinqToDBSection?  Instance
 		{
 			get
 			{

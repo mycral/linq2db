@@ -7,8 +7,8 @@ namespace LinqToDB.SqlQuery
 	public class SqlCreateTableStatement : SqlStatement
 	{
 		public SqlTable        Table           { get; set; }
-		public string          StatementHeader { get; set; }
-		public string          StatementFooter { get; set; }
+		public string?         StatementHeader { get; set; }
+		public string?         StatementFooter { get; set; }
 		public DefaultNullable DefaultNullable { get; set; }
 
 		public override QueryType        QueryType   => QueryType.CreateTable;
@@ -20,7 +20,7 @@ namespace LinqToDB.SqlQuery
 			set {}
 		}
 
-		public override SelectQuery SelectQuery { get => null; set {}}
+		public override SelectQuery? SelectQuery { get => null; set {}}
 
 		public override StringBuilder ToString(StringBuilder sb, Dictionary<IQueryElement, IQueryElement> dic)
 		{

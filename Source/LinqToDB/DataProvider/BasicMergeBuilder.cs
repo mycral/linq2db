@@ -1045,7 +1045,7 @@ namespace LinqToDB.DataProvider
 			return element;
 		}
 
-		private static Tuple<SqlTableSource, SqlTableSource> MoveJoinsToSubqueries(
+		private static Tuple<SqlTableSource, SqlTableSource?> MoveJoinsToSubqueries(
 			SqlStatement statement,
 			string       firstTableAlias,
 			string       secondTableAlias,

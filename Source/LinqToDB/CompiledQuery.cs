@@ -23,9 +23,9 @@ namespace LinqToDB
 			_query = query;
 		}
 
-		readonly object                _sync = new object();
-		readonly LambdaExpression      _query;
-		volatile Func<object[],object> _compiledQuery;
+		readonly object                 _sync = new object();
+		readonly LambdaExpression       _query;
+		volatile Func<object[],object>? _compiledQuery;
 
 		TResult ExecuteQuery<TResult>(params object[] args)
 		{
@@ -58,10 +58,10 @@ namespace LinqToDB
 				return Expression.Call(
 					Expression.Constant(table),
 					type == MethodType.Queryable ?
-						MemberHelper.MethodOf<CompiledTable<T>>(t => t.Create      (null)) :
+						MemberHelper.MethodOf<CompiledTable<T>>(t => t.Create      (null!)) :
 					type == MethodType.Element ?
-						MemberHelper.MethodOf<CompiledTable<T>>(t => t.Execute     (null)) :
-						MemberHelper.MethodOf<CompiledTable<T>>(t => t.ExecuteAsync(null)),
+						MemberHelper.MethodOf<CompiledTable<T>>(t => t.Execute     (null!)) :
+						MemberHelper.MethodOf<CompiledTable<T>>(t => t.ExecuteAsync(null!)),
 					ps);
 			}
 		}

@@ -7,8 +7,8 @@ namespace LinqToDB.Common.Internal.Cache
 {
     internal class CacheEntryStack
     {
-        private readonly CacheEntryStack _previous;
-        private readonly CacheEntry _entry;
+        private readonly CacheEntryStack? _previous;
+        private readonly CacheEntry? _entry;
 
         private CacheEntryStack()
         {

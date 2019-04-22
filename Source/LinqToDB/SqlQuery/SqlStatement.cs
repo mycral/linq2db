@@ -48,8 +48,8 @@ namespace LinqToDB.SqlQuery
 
 								if (ee.Operator == SqlPredicate.Operator.Equal || ee.Operator == SqlPredicate.Operator.NotEqual)
 								{
-									object value1;
-									object value2;
+									object? value1;
+									object? value2;
 
 									if (ee.Expr1 is SqlValue v1)
 										value1 = v1.Value;
@@ -140,7 +140,7 @@ namespace LinqToDB.SqlQuery
 			throw new InvalidOperationException();
 		}
 
-		static SqlPredicate ConvertInListPredicate(MappingSchema mappingSchema, SqlPredicate.InList p)
+		static SqlPredicate? ConvertInListPredicate(MappingSchema mappingSchema, SqlPredicate.InList p)
 		{
 			if (p.Values == null || p.Values.Count == 0)
 				return new SqlPredicate.Expr(new SqlValue(p.IsNot));
@@ -152,14 +152,11 @@ namespace LinqToDB.SqlQuery
 				if (pr.Value == null)
 					return new SqlPredicate.Expr(new SqlValue(p.IsNot));
 
-				if (pr.Value is IEnumerable)
+				if (pr.Value is IEnumerable items)
 				{
-					var items = (IEnumerable)pr.Value;
-
-					if (p.Expr1 is ISqlTableSource)
+					if (p.Expr1 is ISqlTableSource table)
 					{
-						var table = (ISqlTableSource)p.Expr1;
-						var keys  = table.GetKeys(true);
+						var keys = table.GetKeys(true);
 
 						if (keys == null || keys.Count == 0)
 							throw new SqlException("Cant create IN expression.");
@@ -167,8 +164,8 @@ namespace LinqToDB.SqlQuery
 						if (keys.Count == 1)
 						{
 							var values = new List<ISqlExpression>();
-							var field  = GetUnderlyingField(keys[0]);
-							var cd     = field.ColumnDescriptor;
+							var field = GetUnderlyingField(keys[0]);
+							var cd = field.ColumnDescriptor;
 
 							foreach (var item in items)
 							{
@@ -192,10 +189,10 @@ namespace LinqToDB.SqlQuery
 								foreach (var key in keys)
 								{
 									var field = GetUnderlyingField(key);
-									var cd    = field.ColumnDescriptor;
+									var cd = field.ColumnDescriptor;
 									var value = cd.MemberAccessor.GetValue(item);
-									var cond  = value == null ?
-										new SqlCondition(false, new SqlPredicate.IsNull  (field, false)) :
+									var cond = value == null ?
+										new SqlCondition(false, new SqlPredicate.IsNull(field, false)) :
 										new SqlCondition(false, new SqlPredicate.ExprExpr(field, SqlPredicate.Operator.Equal, mappingSchema.GetSqlValue(value)));
 
 									itemCond.Conditions.Add(cond);
@@ -214,10 +211,8 @@ namespace LinqToDB.SqlQuery
 						}
 					}
 
-					if (p.Expr1 is ObjectSqlExpression)
+					if (p.Expr1 is ObjectSqlExpression expr)
 					{
-						var expr = (ObjectSqlExpression)p.Expr1;
-
 						if (expr.Parameters.Length == 1)
 						{
 							var values = new List<ISqlExpression>();
@@ -242,10 +237,10 @@ namespace LinqToDB.SqlQuery
 
 							for (var i = 0; i < expr.Parameters.Length; i++)
 							{
-								var sql   = expr.Parameters[i];
+								var sql = expr.Parameters[i];
 								var value = expr.GetValue(item, i);
-								var cond  = value == null ?
-									new SqlCondition(false, new SqlPredicate.IsNull  (sql, false)) :
+								var cond = value == null ?
+									new SqlCondition(false, new SqlPredicate.IsNull(sql, false)) :
 									new SqlCondition(false, new SqlPredicate.ExprExpr(sql, SqlPredicate.Operator.Equal, new SqlValue(value)));
 
 								itemCond.Conditions.Add(cond);
@@ -268,7 +263,7 @@ namespace LinqToDB.SqlQuery
 			return null;
 		}
 
-		public abstract SelectQuery SelectQuery { get; set; }
+		public abstract SelectQuery? SelectQuery { get; set; }
 
 
 		#region IQueryElement
@@ -280,7 +275,7 @@ namespace LinqToDB.SqlQuery
 
 		#region IEquatable<ISqlExpression>
 
-		public abstract ISqlExpression Walk(WalkOptions options, Func<ISqlExpression, ISqlExpression> func);
+		public abstract ISqlExpression? Walk(WalkOptions options, Func<ISqlExpression, ISqlExpression> func);
 
 		#endregion
 
@@ -298,7 +293,7 @@ namespace LinqToDB.SqlQuery
 
 		#region Aliases
 
-		HashSet<string> _aliases;
+		HashSet<string>? _aliases;
 
 		public void RemoveAlias(string alias)
 		{
@@ -452,7 +447,7 @@ namespace LinqToDB.SqlQuery
 
 		#endregion
 
-		public abstract ISqlTableSource GetTableSource(ISqlTableSource table);
+		public abstract ISqlTableSource? GetTableSource(ISqlTableSource table);
 
 		public abstract void WalkQueries(Func<SelectQuery, SelectQuery> func);
 

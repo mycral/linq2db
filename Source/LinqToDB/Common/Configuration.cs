@@ -230,7 +230,7 @@ namespace LinqToDB.Common
 			/// If factory method is not set, retry policy is not used.
 			/// Not set by default.
 			/// </summary>
-			public static Func<DataConnection,IRetryPolicy> Factory;
+			public static Func<DataConnection,IRetryPolicy?>? Factory;
 
 			/// <summary>
 			/// Status of use of default retry policy.
@@ -240,7 +240,7 @@ namespace LinqToDB.Common
 			public static bool UseDefaultPolicy
 			{
 				get => Factory == DefaultRetryPolicyFactory.GetRetryPolicy;
-				set => Factory = value ? DefaultRetryPolicyFactory.GetRetryPolicy : (Func<DataConnection,IRetryPolicy>)null;
+				set => Factory = value ? DefaultRetryPolicyFactory.GetRetryPolicy : (Func<DataConnection,IRetryPolicy>?)null;
 			}
 
 			/// <summary>

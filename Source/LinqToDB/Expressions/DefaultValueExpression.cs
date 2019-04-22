@@ -8,7 +8,7 @@ namespace LinqToDB.Expressions
 
 	public class DefaultValueExpression : Expression
 	{
-		public DefaultValueExpression(MappingSchema mappingSchema, Type type)
+		public DefaultValueExpression(MappingSchema? mappingSchema, Type type)
 		{
 			_mappingSchema = mappingSchema;
 			_type          = type;

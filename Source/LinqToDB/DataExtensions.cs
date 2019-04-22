@@ -506,11 +506,11 @@ namespace LinqToDB
 		/// </param>
 		/// <returns>Created table as queryable source.</returns>
 		public static ITable<T> CreateTable<T>([NotNull] this IDataContext dataContext,
-			string          tableName       = null,
-			string          databaseName    = null,
-			string          schemaName      = null,
-			string          statementHeader = null,
-			string          statementFooter = null,
+			string?         tableName       = null,
+			string?         databaseName    = null,
+			string?         schemaName      = null,
+			string?         statementHeader = null,
+			string?         statementFooter = null,
 			DefaultNullable defaultNullable  = DefaultNullable.None)
 		{
 			if (dataContext == null) throw new ArgumentNullException(nameof(dataContext));

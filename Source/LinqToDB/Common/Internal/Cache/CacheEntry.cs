@@ -14,8 +14,8 @@ namespace LinqToDB.Common.Internal.Cache
         private static readonly Action<object> ExpirationCallback = ExpirationTokensExpired;
         private readonly Action<CacheEntry> _notifyCacheOfExpiration;
         private readonly Action<CacheEntry> _notifyCacheEntryDisposed;
-        private IList<IDisposable> _expirationTokenRegistrations;
-        private IList<PostEvictionCallbackRegistration> _postEvictionCallbacks;
+        private IList<IDisposable>? _expirationTokenRegistrations;
+        private IList<PostEvictionCallbackRegistration>? _postEvictionCallbacks;
         private bool _isExpired;
 
         internal IList<IChangeToken> _expirationTokens;

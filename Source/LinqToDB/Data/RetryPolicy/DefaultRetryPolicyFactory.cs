@@ -6,7 +6,7 @@ namespace LinqToDB.Data.RetryPolicy
 
 	static class DefaultRetryPolicyFactory
 	{
-		public static IRetryPolicy GetRetryPolicy(DataConnection dataContext)
+		public static IRetryPolicy? GetRetryPolicy(DataConnection dataContext)
 		{
 			if (dataContext.DataProvider is SqlServerDataProvider)
 				return new SqlServerRetryPolicy();

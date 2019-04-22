@@ -16,7 +16,7 @@ namespace LinqToDB.SqlQuery
 		public override QueryType        QueryType    => QueryType.DropTable;
 		public override QueryElementType ElementType  => QueryElementType.DropTableStatement;
 		public override bool             IsParameterDependent { get => false; set {} }
-		public override SelectQuery      SelectQuery          { get => null;  set {} }
+		public override SelectQuery?     SelectQuery          { get => null;  set {} }
 		public          bool             IfExists             { get; }
 
 		public override StringBuilder ToString(StringBuilder sb, Dictionary<IQueryElement, IQueryElement> dic)
@@ -30,7 +30,7 @@ namespace LinqToDB.SqlQuery
 			return sb;
 		}
 
-		public override ISqlExpression Walk(WalkOptions options, Func<ISqlExpression,ISqlExpression> func)
+		public override ISqlExpression? Walk(WalkOptions options, Func<ISqlExpression,ISqlExpression> func)
 		{
 			((ISqlExpressionWalkable)Table)?.Walk(options, func);
 
@@ -52,7 +52,7 @@ namespace LinqToDB.SqlQuery
 			return clone;
 		}
 
-		public override ISqlTableSource GetTableSource(ISqlTableSource table)
+		public override ISqlTableSource? GetTableSource(ISqlTableSource table)
 		{
 			return null;
 		}

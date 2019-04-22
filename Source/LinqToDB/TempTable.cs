@@ -42,9 +42,9 @@ namespace LinqToDB
 		/// <param name="databaseName">Optional name of table's database. If not specified, value from mapping will be used.</param>
 		/// <param name="schemaName">Optional name of table shema/owner. If not specified, value from mapping will be used.</param>
 		public TempTable([JetBrains.Annotations.NotNull] IDataContext db,
-			string tableName    = null,
-			string databaseName = null,
-			string schemaName   = null)
+			string? tableName    = null,
+			string? databaseName = null,
+			string? schemaName   = null)
 		{
 			if (db == null) throw new ArgumentNullException(nameof(db));
 
@@ -344,9 +344,9 @@ namespace LinqToDB
 		/// <returns>Returns temporary table instance.</returns>
 		public static TempTable<T> CreateTempTable<T>(
 			[JetBrains.Annotations.NotNull] this IDataContext db,
-			string tableName    = null,
-			string databaseName = null,
-			string schemaName   = null)
+			string? tableName    = null,
+			string? databaseName = null,
+			string? schemaName   = null)
 		{
 			return new TempTable<T>(db, tableName, databaseName, schemaName);
 		}

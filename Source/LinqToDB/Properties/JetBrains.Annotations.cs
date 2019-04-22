@@ -176,7 +176,7 @@ namespace JetBrains.Annotations
 		  ParameterName = parameterName;
 		}
 
-		public string ParameterName { get; private set; }
+		public string? ParameterName { get; private set; }
 	}
 
 	/// <summary>
@@ -422,7 +422,7 @@ namespace JetBrains.Annotations
 			Comment = comment;
 		}
 
-		public string Comment { get; private set; }
+		public string? Comment { get; private set; }
 	}
 
 	/// <summary>
@@ -466,7 +466,7 @@ namespace JetBrains.Annotations
 			Justification = justification;
 		}
 
-		public string Justification { get; private set; }
+		public string? Justification { get; private set; }
 	}
 
 	/// <summary>
@@ -505,7 +505,7 @@ namespace JetBrains.Annotations
 			BasePath = basePath;
 		}
 
-		public string BasePath { get; private set; }
+		public string? BasePath { get; private set; }
 	}
 
 	/// <summary>
@@ -571,7 +571,7 @@ namespace JetBrains.Annotations
 		/// Allows specifying a macro that will be executed for a <see cref="SourceTemplateAttribute">source template</see>
 		/// parameter when the template is expanded.
 		/// </summary>
-		public string Expression { get; set; }
+		public string? Expression { get; set; }
 
 		/// <summary>
 		/// Allows specifying which occurrence of the target parameter becomes editable when the template is deployed.
@@ -587,7 +587,7 @@ namespace JetBrains.Annotations
 		/// Identifies the target parameter of a <see cref="SourceTemplateAttribute">source template</see> if the
 		/// <see cref="MacroAttribute"/> is applied on a template method.
 		/// </summary>
-		public string Target { get; set; }
+		public string? Target { get; set; }
 	}
 
 	[AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
@@ -674,7 +674,7 @@ namespace JetBrains.Annotations
 			AnonymousProperty = anonymousProperty;
 		}
 
-		public string AnonymousProperty { get; private set; }
+		public string? AnonymousProperty { get; private set; }
 	}
 
 	/// <summary>
@@ -694,7 +694,7 @@ namespace JetBrains.Annotations
 			AnonymousProperty = anonymousProperty;
 		}
 
-		public string AnonymousProperty { get; private set; }
+		public string? AnonymousProperty { get; private set; }
 	}
 
 	/// <summary>
@@ -715,7 +715,7 @@ namespace JetBrains.Annotations
 			AnonymousProperty = anonymousProperty;
 		}
 
-		public string AnonymousProperty { get; private set; }
+		public string? AnonymousProperty { get; private set; }
 	}
 
 	/// <summary>
@@ -842,7 +842,7 @@ namespace JetBrains.Annotations
 			Name = name;
 		}
 
-		public string Name { get; private set; }
+		public string? Name { get; private set; }
 	}
 
 	[AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property)]

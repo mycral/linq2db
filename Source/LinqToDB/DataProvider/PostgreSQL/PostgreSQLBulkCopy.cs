@@ -164,7 +164,7 @@ namespace LinqToDB.DataProvider.PostgreSQL
 					new[] { typeof(object) },
 					Expression.Call(
 						Expression.ArrayIndex(pColumns, Expression.Constant(i)),
-						MemberHelper.MethodOf((ColumnDescriptor cd) => cd.GetValue(default, default)),
+						MemberHelper.MethodOf((ColumnDescriptor cd) => cd.GetValue(default!, default!)),
 						pMapping,
 						pEntity),
 					Expression.Constant(npgsqlType)));
