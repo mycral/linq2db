@@ -11,10 +11,11 @@
 		<RepositoryType>git</RepositoryType>
 
 		<AppDesignerFolder>Properties</AppDesignerFolder>
-		<LangVersion>latest</LangVersion>
+		<LangVersion>8.0</LangVersion>
 		<WarningLevel>4</WarningLevel>
 		<ErrorReport>prompt</ErrorReport>
 		<NoWarn>1701;1702;1705;1591</NoWarn>
+		<NullableContextOptions>enable</NullableContextOptions>
 
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
