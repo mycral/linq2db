@@ -49,24 +49,24 @@ namespace LinqToDB.DataProvider
 		BulkCopyRowsCopied BulkCopy<T>(ITable<T> table, BulkCopyOptions options, IEnumerable<T> source);
 
 		int Merge<T>(
-			DataConnection           dataConnection,
-			Expression<Func<T,bool>> predicate,
-			bool                     delete,
-			IEnumerable<T>           source,
-			string                   tableName,
-			string                   databaseName,
-			string                   schemaName)
+			DataConnection            dataConnection,
+			Expression<Func<T,bool>>? predicate,
+			bool                      delete,
+			IEnumerable<T>            source,
+			string?                   tableName,
+			string?                   databaseName,
+			string?                   schemaName)
 			where T : class;
 
 		Task<int> MergeAsync<T>(
-			DataConnection           dataConnection,
-			Expression<Func<T,bool>> predicate,
-			bool                     delete,
-			IEnumerable<T>           source,
-			string                   tableName,
-			string                   databaseName,
-			string                   schemaName,
-			CancellationToken        token)
+			DataConnection            dataConnection,
+			Expression<Func<T,bool>>? predicate,
+			bool                      delete,
+			IEnumerable<T>            source,
+			string?                   tableName,
+			string?                   databaseName,
+			string?                   schemaName,
+			CancellationToken         token)
 			where T : class;
 
 		int Merge<TTarget, TSource>(DataConnection dataConnection, IMergeable<TTarget, TSource> merge)

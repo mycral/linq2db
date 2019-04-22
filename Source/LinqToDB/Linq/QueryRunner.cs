@@ -265,8 +265,8 @@ namespace LinqToDB.Linq
 
 		static Tuple<
 			Func<Query,IDataContext,Mapper<T>,Expression,object[],int,IEnumerable<T>>,
-			Func<Expression,object[],int>,
-			Func<Expression,object[],int>>
+			Func<Expression,object[],int>?,
+			Func<Expression,object[],int>?>
 			GetExecuteQuery<T>(
 				Query query,
 				Func<Query,IDataContext,Mapper<T>,Expression,object[],int,IEnumerable<T>> queryFunc)
@@ -276,7 +276,7 @@ namespace LinqToDB.Linq
 			if (query.Queries.Count != 1)
 				throw new InvalidOperationException();
 
-			Func<Expression,object[],int> skip = null, take = null;
+			Func<Expression,object[],int>? skip = null, take = null;
 
 			var selectQuery = query.Queries[0].Statement.SelectQuery;
 			var select      = selectQuery.Select;
@@ -410,9 +410,9 @@ namespace LinqToDB.Linq
 			readonly Func<Expression,object[],int> _skipAction;
 			readonly Func<Expression,object[],int> _takeAction;
 
-			IQueryRunner     _queryRunner;
-			IDataReaderAsync _dataReader;
-			int              _take;
+			IQueryRunner?     _queryRunner;
+			IDataReaderAsync? _dataReader;
+			int               _take;
 
 			public AsyncEnumeratorImpl(
 				Query                         query,

@@ -342,7 +342,7 @@ namespace LinqToDB.Linq.Builder
 					//
 					var expr = Expression.Call(
 						null,
-						MemberHelper.MethodOf(() => Queryable.Where(null, (Expression<Func<TElement,bool>>)null)),
+						MemberHelper.MethodOf(() => Queryable.Where(null, (Expression<Func<TElement,bool>>)null!)),
 						context._innerExpression,
 						Expression.Lambda<Func<TElement,bool>>(
 							ExpressionBuilder.Equal(context.Builder.MappingSchema, innerKey, outerParam),
@@ -358,7 +358,7 @@ namespace LinqToDB.Linq.Builder
 
 					return Expression.Call(
 						null,
-						MemberHelper.MethodOf(() => GetGrouping(null, null, default, null)),
+						MemberHelper.MethodOf(() => GetGrouping(null!, null!, default!, null!)),
 						new[]
 						{
 							ExpressionBuilder.QueryRunnerParam,
@@ -389,7 +389,7 @@ namespace LinqToDB.Linq.Builder
 				{
 					var expr = Expression.Call(
 						null,
-						MemberHelper.MethodOf(() => Queryable.Where(null, (Expression<Func<T,bool>>)null)),
+						MemberHelper.MethodOf(() => Queryable.Where(null, (Expression<Func<T,bool>>)null!)),
 						context._innerExpression,
 						Expression.Lambda<Func<T,bool>>(
 							ExpressionBuilder.Equal(
@@ -422,7 +422,7 @@ namespace LinqToDB.Linq.Builder
 
 				if (expression != null && expression.NodeType == ExpressionType.Call)
 				{
-					Expression replaceExpression = null;
+					Expression? replaceExpression = null;
 
 					if (level == 0)
 					{

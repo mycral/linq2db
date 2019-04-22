@@ -9,7 +9,7 @@ namespace LinqToDB.Linq.Builder
 
 	class ExpressionContext : SequenceContextBase
 	{
-		public ExpressionContext(IBuildContext parent, IBuildContext[] sequences, LambdaExpression lambda)
+		public ExpressionContext(IBuildContext? parent, IBuildContext[] sequences, LambdaExpression lambda)
 			: base(parent, sequences, lambda)
 		{
 		}

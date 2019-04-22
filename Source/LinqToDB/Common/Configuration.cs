@@ -240,7 +240,7 @@ namespace LinqToDB.Common
 			public static bool UseDefaultPolicy
 			{
 				get => Factory == DefaultRetryPolicyFactory.GetRetryPolicy;
-				set => Factory = value ? DefaultRetryPolicyFactory.GetRetryPolicy : (Func<DataConnection,IRetryPolicy>?)null;
+				set => Factory = value ? DefaultRetryPolicyFactory.GetRetryPolicy : (Func<DataConnection,IRetryPolicy?>?)null;
 			}
 
 			/// <summary>

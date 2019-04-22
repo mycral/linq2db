@@ -131,7 +131,7 @@ namespace LinqToDB.DataProvider
 			throw new NotImplementedException("This is not implemented for .Net Core");
 #else
 
-			var mi = MemberHelper.MethodOf(() => Delegate.CreateDelegate(typeof(string), (object) null, "", false));
+			var mi = MemberHelper.MethodOf(() => Delegate.CreateDelegate(typeof(string), (object) null!, "", false));
 
 			var lambda = Expression.Lambda<Func<Action<object>,Delegate>>(
 				Expression.Call(

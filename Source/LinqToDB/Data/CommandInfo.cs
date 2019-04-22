@@ -980,7 +980,7 @@ namespace LinqToDB.Data
 									if (mapper != null)
 									{
 										return Expression.Call(
-											MemberHelper.MethodOf(() => PrepareDataParameter(null, null)),
+											MemberHelper.MethodOf(() => PrepareDataParameter(null!, null!)),
 											mapper.GetBody(valueGetter),
 											Expression.Constant(column.ColumnName));
 									}

@@ -75,7 +75,7 @@ namespace LinqToDB.Linq.Builder
 
 		ParameterExpression _rootExpression;
 
-		public virtual Expression BuildExpression(Expression expression, int level, bool enforceServerSide)
+		public virtual Expression BuildExpression(Expression? expression, int level, bool enforceServerSide)
 #if DEBUG && TRACK_BUILD
 		{
 			Debug.WriteLine("{0}.BuildExpression start {1}:\n{2}".Args(GetType().Name, level, (expression ?? Body).GetDebugView()));

@@ -21,8 +21,8 @@ namespace LinqToDB.Linq
 
 	public abstract class Query
 	{
-		public Func<IDataContext,Expression,object[],object> GetElement;
-		public Func<IDataContext,Expression,object[],CancellationToken,Task<object>> GetElementAsync;
+		public Func<IDataContext,Expression,object[]?,object> GetElement;
+		public Func<IDataContext,Expression,object[]?,CancellationToken,Task<object>> GetElementAsync;
 
 		#region Init
 
@@ -30,7 +30,7 @@ namespace LinqToDB.Linq
 
 		internal abstract void Init(IBuildContext parseContext, List<ParameterAccessor> sqlParameters);
 
-		protected Query(IDataContext dataContext, Expression expression)
+		protected Query(IDataContext dataContext, Expression? expression)
 		{
 			ContextID        = dataContext.ContextID;
 			ContextType      = dataContext.GetType();
@@ -48,7 +48,7 @@ namespace LinqToDB.Linq
 
 		internal readonly string           ContextID;
 		internal readonly Type             ContextType;
-		internal readonly Expression       Expression;
+		internal readonly Expression?      Expression;
 		internal readonly MappingSchema    MappingSchema;
 		internal readonly string           ConfigurationID;
 		internal readonly bool             InlineParameters;
@@ -145,7 +145,7 @@ namespace LinqToDB.Linq
 	{
 		#region Init
 
-		public Query(IDataContext dataContext, Expression expression)
+		public Query(IDataContext dataContext, Expression? expression)
 			: base(dataContext, expression)
 		{
 			DoNotCache = NoLinqCache.IsNoCache;

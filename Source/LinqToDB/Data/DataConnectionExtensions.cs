@@ -1500,9 +1500,9 @@ namespace LinqToDB.Data
 			this DataConnection      dataConnection,
 			IQueryable<T>            source,
 			Expression<Func<T,bool>> predicate,
-			string                   tableName    = null,
-			string                   databaseName = null,
-			string                   schemaName   = null
+			string?                  tableName    = null,
+			string?                  databaseName = null,
+			string?                  schemaName   = null
 		)
 			where T : class
 		{
@@ -1528,9 +1528,9 @@ namespace LinqToDB.Data
 			this DataConnection      dataConnection,
 			Expression<Func<T,bool>> predicate,
 			IEnumerable<T>           source,
-			string                   tableName    = null,
-			string                   databaseName = null,
-			string                   schemaName   = null
+			string?                  tableName    = null,
+			string?                  databaseName = null,
+			string?                  schemaName   = null
 		)
 			where T : class
 		{
@@ -1556,9 +1556,9 @@ namespace LinqToDB.Data
 			this DataConnection dataConnection,
 			bool                delete,
 			IEnumerable<T>      source,
-			string              tableName    = null,
-			string              databaseName = null,
-			string              schemaName   = null
+			string?             tableName    = null,
+			string?             databaseName = null,
+			string?             schemaName   = null
 		)
 			where T : class
 		{
@@ -1580,9 +1580,9 @@ namespace LinqToDB.Data
 		public static int Merge<T>(
 			this DataConnection dataConnection,
 			IEnumerable<T>      source,
-			string              tableName    = null,
-			string              databaseName = null,
-			string              schemaName   = null
+			string?             tableName    = null,
+			string?             databaseName = null,
+			string?             schemaName   = null
 		)
 			where T : class
 		{
@@ -1608,9 +1608,9 @@ namespace LinqToDB.Data
 			this ITable<T>           table,
 			IQueryable<T>            source,
 			Expression<Func<T,bool>> predicate,
-			string                   tableName    = null,
-			string                   databaseName = null,
-			string                   schemaName   = null
+			string?                  tableName    = null,
+			string?                  databaseName = null,
+			string?                  schemaName   = null
 		)
 			where T : class
 		{
@@ -1644,9 +1644,9 @@ namespace LinqToDB.Data
 			this ITable<T>           table,
 			Expression<Func<T,bool>> predicate,
 			IEnumerable<T>           source,
-			string                   tableName    = null,
-			string                   databaseName = null,
-			string                   schemaName   = null
+			string?                  tableName    = null,
+			string?                  databaseName = null,
+			string?                  schemaName   = null
 		)
 			where T : class
 		{
@@ -1680,9 +1680,9 @@ namespace LinqToDB.Data
 			this ITable<T> table,
 			bool           delete,
 			IEnumerable<T> source,
-			string         tableName    = null,
-			string         databaseName = null,
-			string         schemaName   = null
+			string?        tableName    = null,
+			string?        databaseName = null,
+			string?        schemaName   = null
 		)
 			where T : class
 		{
@@ -1712,9 +1712,9 @@ namespace LinqToDB.Data
 		public static int Merge<T>(
 			this ITable<T> table,
 			IEnumerable<T> source,
-			string         tableName    = null,
-			string         databaseName = null,
-			string         schemaName   = null
+			string?        tableName    = null,
+			string?        databaseName = null,
+			string?        schemaName   = null
 		)
 			where T : class
 		{
@@ -1749,9 +1749,9 @@ namespace LinqToDB.Data
 			this DataConnection      dataConnection,
 			IQueryable<T>            source,
 			Expression<Func<T,bool>> predicate,
-			string                   tableName         = null,
-			string                   databaseName      = null,
-			string                   schemaName        = null,
+			string?                  tableName         = null,
+			string?                  databaseName      = null,
+			string?                  schemaName        = null,
 			CancellationToken        cancellationToken = default)
 			where T : class
 		{
@@ -1779,9 +1779,9 @@ namespace LinqToDB.Data
 			this DataConnection      dataConnection,
 			Expression<Func<T,bool>> predicate,
 			IEnumerable<T>           source,
-			string                   tableName         = null,
-			string                   databaseName      = null,
-			string                   schemaName        = null,
+			string?                  tableName         = null,
+			string?                  databaseName      = null,
+			string?                  schemaName        = null,
 			CancellationToken        cancellationToken = default)
 			where T : class
 		{
@@ -1808,9 +1808,9 @@ namespace LinqToDB.Data
 			this DataConnection dataConnection,
 			bool                delete,
 			IEnumerable<T>      source,
-			string              tableName         = null,
-			string              databaseName      = null,
-			string              schemaName        = null,
+			string?             tableName         = null,
+			string?             databaseName      = null,
+			string?             schemaName        = null,
 			CancellationToken   cancellationToken = default
 		)
 			where T : class
@@ -1834,9 +1834,9 @@ namespace LinqToDB.Data
 		public static Task<int> MergeAsync<T>(
 			this DataConnection dataConnection,
 			IEnumerable<T>      source,
-			string              tableName         = null,
-			string              databaseName      = null,
-			string              schemaName        = null,
+			string?             tableName         = null,
+			string?             databaseName      = null,
+			string?             schemaName        = null,
 			CancellationToken   cancellationToken = default
 		)
 			where T : class
@@ -1864,9 +1864,9 @@ namespace LinqToDB.Data
 			this ITable<T>           table,
 			IQueryable<T>            source,
 			Expression<Func<T,bool>> predicate,
-			string                   tableName         = null,
-			string                   databaseName      = null,
-			string                   schemaName        = null,
+			string?                  tableName         = null,
+			string?                  databaseName      = null,
+			string?                  schemaName        = null,
 			CancellationToken        cancellationToken = default
 		)
 			where T : class
@@ -1903,9 +1903,9 @@ namespace LinqToDB.Data
 			this ITable<T>           table,
 			Expression<Func<T,bool>> predicate,
 			IEnumerable<T>           source,
-			string                   tableName         = null,
-			string                   databaseName      = null,
-			string                   schemaName        = null,
+			string?                  tableName         = null,
+			string?                  databaseName      = null,
+			string?                  schemaName        = null,
 			CancellationToken        cancellationToken = default
 		)
 			where T : class
@@ -1942,9 +1942,9 @@ namespace LinqToDB.Data
 			this ITable<T>    table,
 			bool              delete,
 			IEnumerable<T>    source,
-			string            tableName         = null,
-			string            databaseName      = null,
-			string            schemaName        = null,
+			string?           tableName         = null,
+			string?           databaseName      = null,
+			string?           schemaName        = null,
 			CancellationToken cancellationToken = default
 		)
 			where T : class
@@ -1977,9 +1977,9 @@ namespace LinqToDB.Data
 		public static Task<int> MergeAsync<T>(
 			this ITable<T>    table,
 			IEnumerable<T>    source,
-			string            tableName         = null,
-			string            databaseName      = null,
-			string            schemaName        = null,
+			string?           tableName         = null,
+			string?           databaseName      = null,
+			string?           schemaName        = null,
 			CancellationToken cancellationToken = default)
 			where T : class
 		{

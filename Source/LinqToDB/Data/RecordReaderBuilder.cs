@@ -332,7 +332,7 @@ namespace LinqToDB.Data
 			}
 			else
 			{
-				var exceptionMethod = MemberHelper.MethodOf(() => DefaultInheritanceMappingException(null, null));
+				var exceptionMethod = MemberHelper.MethodOf(() => DefaultInheritanceMappingException(null!, null!));
 				var dindex          = GetReaderIndex(entityDescriptor, null, inheritanceMapping[0].DiscriminatorName);
 
 				if (dindex >= 0)

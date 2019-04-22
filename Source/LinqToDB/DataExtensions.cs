@@ -52,7 +52,7 @@ namespace LinqToDB
 		[Pure]
 		public static ITable<T> GetTable<T>(
 			this IDataContext dataContext,
-			object instance,
+			object? instance,
 			[NotNull] MethodInfo methodInfo,
 			[NotNull] params object[] parameters)
 			where T : class
@@ -183,7 +183,7 @@ namespace LinqToDB
 		/// <param name="schemaName">Optional schema/owner name, to override default name. See <see cref="LinqExtensions.SchemaName{T}(ITable{T}, string)"/> method for support information per provider.</param>
 		/// <returns>Number of affected records.</returns>
 		public static int Insert<T>([NotNull] this IDataContext dataContext, T obj,
-			string tableName = null, string databaseName = null, string schemaName = null)
+			string? tableName = null, string? databaseName = null, string? schemaName = null)
 		{
 			if (dataContext == null) throw new ArgumentNullException(nameof(dataContext));
 			return QueryRunner.Insert<T>.Query(dataContext, obj, tableName, databaseName, schemaName);
@@ -202,7 +202,7 @@ namespace LinqToDB
 		/// <returns>Number of affected records.</returns>
 		public static Task<int> InsertAsync<T>(
 			[NotNull] this IDataContext dataContext, T obj,
-			string tableName = null, string databaseName = null, string schemaName = null,
+			string? tableName = null, string? databaseName = null, string? schemaName = null,
 			CancellationToken token = default)
 		{
 			if (dataContext == null) throw new ArgumentNullException(nameof(dataContext));

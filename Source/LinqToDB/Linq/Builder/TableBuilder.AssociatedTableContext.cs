@@ -425,7 +425,7 @@ namespace LinqToDB.Linq.Builder
 
 					expression = Expression.Call(
 						null,
-						MemberHelper.MethodOf(() => ExecuteSubQuery(null, null, null)),
+						MemberHelper.MethodOf(() => ExecuteSubQuery(null!, null!, null!)),
 							ExpressionBuilder.QueryRunnerParam,
 							Expression.Convert(parentObject, typeof(object)),
 							Expression.Constant(queryReader));

@@ -24,7 +24,7 @@ namespace LinqToDB.Expressions
 
 		public override Expression Reduce()
 		{
-			var mi = MemberHelper.MethodOf(() => Enumerable.First<string>(null));
+			var mi = MemberHelper.MethodOf(() => Enumerable.First<string>(null!));
 			var gi = mi.GetGenericMethodDefinition().MakeGenericMethod(_type);
 
 			return Call(null, gi, _expression);

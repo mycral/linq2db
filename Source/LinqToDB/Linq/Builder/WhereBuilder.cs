@@ -29,7 +29,7 @@ namespace LinqToDB.Linq.Builder
 			return result;
 		}
 
-		protected override SequenceConvertInfo Convert(
+		protected override SequenceConvertInfo? Convert(
 			ExpressionBuilder builder, MethodCallExpression methodCall, BuildInfo buildInfo, ParameterExpression param)
 		{
 			var predicate = (LambdaExpression)methodCall.Arguments[1].Unwrap();

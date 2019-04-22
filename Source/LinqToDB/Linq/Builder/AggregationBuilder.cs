@@ -167,7 +167,7 @@ namespace LinqToDB.Linq.Builder
 				else
 				{
 					expr = Expression.Block(
-						Expression.Call(null, MemberHelper.MethodOf(() => CheckNullValue(null, null)), ExpressionBuilder.DataReaderParam, Expression.Constant(_methodName)),
+						Expression.Call(null, MemberHelper.MethodOf(() => CheckNullValue(null!, null!)), ExpressionBuilder.DataReaderParam, Expression.Constant(_methodName)),
 						Builder.BuildSql(_returnType, fieldIndex));
 				}
 

@@ -1604,7 +1604,7 @@ namespace LinqToDB.Linq.Builder
 
 			if (index.NodeType == ExpressionType.Lambda)
 			{
-				skipMethod = MemberHelper.MethodOf(() => LinqExtensions.Skip<object>(null, null));
+				skipMethod = MemberHelper.MethodOf(() => LinqExtensions.Skip<object>(null!, null!));
 				skipMethod = skipMethod.GetGenericMethodDefinition();
 			}
 			else

@@ -1487,7 +1487,7 @@ namespace LinqToDB.DataProvider
 
 	internal static class MergeSourceExtensions
 	{
-		static readonly MethodInfo _methodInfo = MemberHelper.MethodOf(() => GetMergeContext((IQueryable<int>)null)).GetGenericMethodDefinition();
+		static readonly MethodInfo _methodInfo = MemberHelper.MethodOf(() => GetMergeContext((IQueryable<int>)null!)).GetGenericMethodDefinition();
 
 		public static MergeContextParser.Context GetMergeContext<TSource>(this IQueryable<TSource> source)
 		{

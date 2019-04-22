@@ -200,7 +200,7 @@ namespace LinqToDB.Common
 			throw new LinqToDBConvertException(text);
 		}
 
-		static readonly MethodInfo _throwLinqToDBConvertException = MemberHelper.MethodOf(() => ThrowLinqToDBException(null));
+		static readonly MethodInfo _throwLinqToDBConvertException = MemberHelper.MethodOf(() => ThrowLinqToDBException(null!));
 
 		static Expression? GetToEnum(Type from, Type to, Expression expression, MappingSchema mappingSchema)
 		{
@@ -292,7 +292,7 @@ namespace LinqToDB.Common
 			public MapValueAttribute[] Attrs;
 		}
 
-		static Expression GetFromEnum(Type from, Type to, Expression expression, MappingSchema mappingSchema)
+		static Expression? GetFromEnum(Type from, Type to, Expression expression, MappingSchema mappingSchema)
 		{
 			if (from.IsEnumEx())
 			{

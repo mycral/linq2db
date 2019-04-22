@@ -146,7 +146,7 @@ namespace LinqToDB.DataProvider.Oracle
 							{
 								Expression.Assign(tstz, Expression.Call(dataReaderParameter, "GetOracleTimeStampTZ", null, indexParameter)),
 								Expression.Call(
-									MemberHelper.MethodOf(() => ToDateTimeOffset(null)),
+									MemberHelper.MethodOf(() => ToDateTimeOffset(null!)),
 									Expression.Convert(tstz, typeof(object))
 								)
 							}),
@@ -274,7 +274,7 @@ namespace LinqToDB.DataProvider.Oracle
 										null,
 										null)),
 								Expression.Call(
-									MemberHelper.MethodOf(() => ToDateTimeOffset(null)),
+									MemberHelper.MethodOf(() => ToDateTimeOffset(null!)),
 									Expression.Convert(tstz, typeof(object))
 								)
 							}),
@@ -293,7 +293,7 @@ namespace LinqToDB.DataProvider.Oracle
 							Expression.PropertyOrField(
 								Expression.Convert(
 									Expression.Call(
-										MemberHelper.MethodOf(() => Proxy.GetUnderlyingObject((DbCommand)null)),
+										MemberHelper.MethodOf(() => Proxy.GetUnderlyingObject((DbCommand)null!)),
 										Expression.Convert(Expression.PropertyOrField(p, "Command"), typeof(DbCommand))),
 									connectionType.AssemblyEx().GetType(AssemblyName + ".Client.OracleCommand", true)),
 								"BindByName"),

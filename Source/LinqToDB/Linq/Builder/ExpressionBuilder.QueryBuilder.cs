@@ -683,7 +683,7 @@ namespace LinqToDB.Linq.Builder
 
 				return Expression.Call(
 					null,
-					MemberHelper.MethodOf(() => ExecuteSubQuery(null, null, null)),
+					MemberHelper.MethodOf(() => ExecuteSubQuery(null!, null!, null!)),
 						DataContextParam,
 						Expression.NewArrayInit(typeof(object), parameters),
 						Expression.Constant(queryReader)
@@ -704,7 +704,7 @@ namespace LinqToDB.Linq.Builder
 		}
 
 		static readonly MethodInfo _whereMethodInfo =
-			MemberHelper.MethodOf(() => LinqExtensions.Where<int,int,object>(null,null)).GetGenericMethodDefinition();
+			MemberHelper.MethodOf(() => LinqExtensions.Where<int,int,object>(null!,null!)).GetGenericMethodDefinition();
 
 		static readonly MethodInfo _queryableMethodInfo =
 			MemberHelper.MethodOf<IQueryable<bool>>(n => n.Where(a => a)).GetGenericMethodDefinition();

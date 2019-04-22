@@ -116,7 +116,7 @@ namespace LinqToDB.Linq.Builder
 			{
 			}
 
-			public override Expression BuildExpression(Expression expression, int level, bool enforceServerSide)
+			public override Expression BuildExpression(Expression? expression, int level, bool enforceServerSide)
 			{
 				return base.BuildExpression(expression, level, true);
 			}
@@ -286,7 +286,7 @@ namespace LinqToDB.Linq.Builder
 
 					var expr = Expression.Call(
 						null,
-						MemberHelper.MethodOf(() => Queryable.Where(null, (Expression<Func<TSource,bool>>)null)),
+						MemberHelper.MethodOf(() => Queryable.Where(null, (Expression<Func<TSource,bool>>)null!)),
 						groupExpression,
 						Expression.Lambda<Func<TSource,bool>>(
 							ExpressionBuilder.Equal(context.Builder.MappingSchema, context._key.Lambda.Body, keyParam),
@@ -294,7 +294,7 @@ namespace LinqToDB.Linq.Builder
 
 					expr = Expression.Call(
 						null,
-						MemberHelper.MethodOf(() => Queryable.Select(null, (Expression<Func<TSource,TElement>>)null)),
+						MemberHelper.MethodOf(() => Queryable.Select(null, (Expression<Func<TSource,TElement>>)null!)),
 						expr,
 						context._element.Lambda);
 
@@ -334,7 +334,7 @@ namespace LinqToDB.Linq.Builder
 
 					return Expression.Call(
 						null,
-						MemberHelper.MethodOf(() => GetGrouping(null, null, null, null, null, null, null, null)),
+						MemberHelper.MethodOf(() => GetGrouping(null!, null!, null!, null!, null!, null!, null!, null!)),
 						new Expression[]
 						{
 							ExpressionBuilder.QueryRunnerParam,
@@ -660,7 +660,7 @@ namespace LinqToDB.Linq.Builder
 				{
 // ReSharper disable AssignNullToNotNullAttribute
 					//ReflectionHelper.Expressor<object>.MethodExpressor(_ => Queryable.Where(null, (Expression<Func<T,bool>>)null)),
-					var mi   = MemberHelper.MethodOf(() => Enumerable.Where(null, (Func<T,bool>)null));
+					var mi   = MemberHelper.MethodOf(() => Enumerable.Where(null, (Func<T,bool>)null!));
 // ReSharper restore AssignNullToNotNullAttribute
 					var arg2 = Expression.Lambda<Func<T,bool>>(ExpressionBuilder.Equal(mappingSchema, expr1, expr2), new[] { param });
 
