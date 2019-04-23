@@ -98,7 +98,7 @@ namespace LinqToDB.Linq.Builder
 				return _cteQueryContext ?? (_cteQueryContext = Builder.GetCteContext(_cteExpression));
 			}
 
-			public override IsExpressionResult IsExpression(Expression expression, int level, RequestFor requestFor)
+			public override IsExpressionResult IsExpression(Expression? expression, int level, RequestFor requestFor)
 			{
 				var queryContext = GetQueryContext();
 				if (queryContext == null)
@@ -106,7 +106,7 @@ namespace LinqToDB.Linq.Builder
 				return queryContext.IsExpression(expression, level, requestFor);
 			}
 
-			public override SqlInfo[] ConvertToSql(Expression expression, int level, ConvertFlags flags)
+			public override SqlInfo[] ConvertToSql(Expression? expression, int level, ConvertFlags flags)
 			{
 				var queryContext = GetQueryContext();
 				if (queryContext == null)
@@ -137,7 +137,7 @@ namespace LinqToDB.Linq.Builder
 				return result;
 			}
 
-			public override int ConvertToParentIndex(int index, IBuildContext context)
+			public override int ConvertToParentIndex(int index, IBuildContext? context)
 			{
 				if (context == _cteQueryContext)
 				{
@@ -188,7 +188,7 @@ namespace LinqToDB.Linq.Builder
 				}
 			}
 
-			public override Expression BuildExpression(Expression expression, int level, bool enforceServerSide)
+			public override Expression BuildExpression(Expression? expression, int level, bool enforceServerSide)
 			{
 				var queryContext = GetQueryContext();
 				if (queryContext == null)

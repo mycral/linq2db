@@ -22,7 +22,7 @@ namespace LinqToDB.Linq.Builder
 			return new Context(builder.BuildSequence(new BuildInfo(buildInfo, call.Arguments[0])));
 		}
 
-		public SequenceConvertInfo Convert(ExpressionBuilder builder, BuildInfo buildInfo, ParameterExpression param)
+		public SequenceConvertInfo? Convert(ExpressionBuilder builder, BuildInfo buildInfo, ParameterExpression param)
 		{
 			return null;
 		}

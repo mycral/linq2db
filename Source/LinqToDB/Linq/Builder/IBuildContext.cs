@@ -25,8 +25,8 @@ namespace LinqToDB.Linq.Builder
 
 		void               BuildQuery<T>       (Query<T> query, ParameterExpression queryParameter);
 		Expression         BuildExpression     (Expression? expression, int level, bool enforceServerSide);
-		SqlInfo[]          ConvertToSql        (Expression expression, int level, ConvertFlags flags);
-		SqlInfo[]          ConvertToIndex      (Expression expression, int level, ConvertFlags flags);
+		SqlInfo[]          ConvertToSql        (Expression? expression, int level, ConvertFlags flags);
+		SqlInfo[]          ConvertToIndex      (Expression? expression, int level, ConvertFlags flags);
 
 		/// <summary>
 		/// Returns information about expression according to <paramref name="requestFlag"/>. 
@@ -37,10 +37,10 @@ namespace LinqToDB.Linq.Builder
 		/// <returns><see cref="IsExpressionResult"/> instance.</returns>
 		IsExpressionResult IsExpression        (Expression? expression, int level, RequestFor requestFlag);
 
-		IBuildContext      GetContext          (Expression expression, int level, BuildInfo buildInfo);
-		int                ConvertToParentIndex(int index, IBuildContext context);
+		IBuildContext      GetContext          (Expression? expression, int level, BuildInfo buildInfo);
+		int                ConvertToParentIndex(int index, IBuildContext? context);
 		void               SetAlias            (string alias);
-		ISqlExpression?    GetSubQuery         (IBuildContext context);
+		ISqlExpression?    GetSubQuery         (IBuildContext? context);
 
 		SqlStatement       GetResultStatement();
 	}

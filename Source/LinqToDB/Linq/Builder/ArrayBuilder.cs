@@ -128,7 +128,7 @@ namespace LinqToDB.Linq.Builder
 		}
 
 
-		public SequenceConvertInfo Convert(ExpressionBuilder builder, BuildInfo buildInfo, ParameterExpression param)
+		public SequenceConvertInfo? Convert(ExpressionBuilder builder, BuildInfo buildInfo, ParameterExpression param)
 		{
 			return null;
 		}
@@ -165,13 +165,13 @@ namespace LinqToDB.Linq.Builder
 				throw new NotImplementedException();
 			}
 
-			public Expression BuildExpression(Expression expression, int level, bool enforceServerSide)
+			public Expression BuildExpression(Expression? expression, int level, bool enforceServerSide)
 			{
 				var index = ConvertToIndex(expression, level, ConvertFlags.Field)[0].Index;
 				return Builder.BuildSql(_elementType, index);
 			}
 
-			public SqlInfo[] ConvertToSql(Expression expression, int level, ConvertFlags flags)
+			public SqlInfo[] ConvertToSql(Expression? expression, int level, ConvertFlags flags)
 			{
 				if (expression == null)
 				{
@@ -187,7 +187,7 @@ namespace LinqToDB.Linq.Builder
 				throw new NotImplementedException();
 			}
 
-			public SqlInfo[] ConvertToIndex(Expression expression, int level, ConvertFlags flags)
+			public SqlInfo[] ConvertToIndex(Expression? expression, int level, ConvertFlags flags)
 			{
 				var sql = ConvertToSql(expression, level, flags);
 
@@ -197,7 +197,7 @@ namespace LinqToDB.Linq.Builder
 				return sql;
 			}
 
-			public IsExpressionResult IsExpression(Expression expression, int level, RequestFor requestFlag)
+			public IsExpressionResult IsExpression(Expression? expression, int level, RequestFor requestFlag)
 			{
 				if (expression == null)
 				{
@@ -211,12 +211,12 @@ namespace LinqToDB.Linq.Builder
 				return IsExpressionResult.False;
 			}
 
-			public IBuildContext GetContext(Expression expression, int level, BuildInfo buildInfo)
+			public IBuildContext GetContext(Expression? expression, int level, BuildInfo buildInfo)
 			{
 				throw new NotImplementedException();
 			}
 
-			public int ConvertToParentIndex(int index, IBuildContext context)
+			public int ConvertToParentIndex(int index, IBuildContext? context)
 			{
 				throw new NotImplementedException();
 			}
@@ -226,7 +226,7 @@ namespace LinqToDB.Linq.Builder
 				SelectQuery.Select.Columns[0].Alias = alias;
 			}
 
-			public ISqlExpression GetSubQuery(IBuildContext context)
+			public ISqlExpression? GetSubQuery(IBuildContext? context)
 			{
 				throw new NotImplementedException();
 			}

@@ -48,17 +48,17 @@ namespace LinqToDB.Linq.Builder
 		}
 
 		public abstract Expression         BuildExpression(Expression? expression, int level, bool enforceServerSide);
-		public abstract SqlInfo[]          ConvertToSql   (Expression expression, int level, ConvertFlags flags);
-		public abstract SqlInfo[]          ConvertToIndex (Expression expression, int level, ConvertFlags flags);
+		public abstract SqlInfo[]          ConvertToSql   (Expression? expression, int level, ConvertFlags flags);
+		public abstract SqlInfo[]          ConvertToIndex (Expression? expression, int level, ConvertFlags flags);
 		public abstract IsExpressionResult IsExpression   (Expression? expression, int level, RequestFor requestFlag);
-		public abstract IBuildContext      GetContext     (Expression expression, int level, BuildInfo buildInfo);
+		public abstract IBuildContext      GetContext     (Expression? expression, int level, BuildInfo buildInfo);
 
 		public virtual SqlStatement GetResultStatement()
 		{
 			return Sequence.GetResultStatement();
 		}
 
-		public virtual int ConvertToParentIndex(int index, IBuildContext context)
+		public virtual int ConvertToParentIndex(int index, IBuildContext? context)
 		{
 			return Parent?.ConvertToParentIndex(index, context) ?? index;
 		}
@@ -71,7 +71,7 @@ namespace LinqToDB.Linq.Builder
 			}
 		}
 
-		public virtual ISqlExpression? GetSubQuery(IBuildContext context)
+		public virtual ISqlExpression? GetSubQuery(IBuildContext? context)
 		{
 			return null;
 		}

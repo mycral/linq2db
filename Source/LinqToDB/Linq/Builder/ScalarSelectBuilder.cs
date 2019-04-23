@@ -27,7 +27,7 @@ namespace LinqToDB.Linq.Builder
 			};
 		}
 
-		public SequenceConvertInfo Convert(ExpressionBuilder builder, BuildInfo buildInfo, ParameterExpression param)
+		public SequenceConvertInfo? Convert(ExpressionBuilder builder, BuildInfo buildInfo, ParameterExpression param)
 		{
 			return null;
 		}
@@ -64,7 +64,7 @@ namespace LinqToDB.Linq.Builder
 				QueryRunner.SetRunQuery(query, mapper);
 			}
 
-			public Expression BuildExpression(Expression expression, int level, bool enforceServerSide)
+			public Expression BuildExpression(Expression? expression, int level, bool enforceServerSide)
 			{
 				if (expression == null)
 					expression = ((LambdaExpression)Expression).Body.Unwrap();
@@ -93,17 +93,17 @@ namespace LinqToDB.Linq.Builder
 
 			}
 
-			public SqlInfo[] ConvertToSql(Expression expression, int level, ConvertFlags flags)
+			public SqlInfo[] ConvertToSql(Expression? expression, int level, ConvertFlags flags)
 			{
 				throw new NotImplementedException();
 			}
 
-			public SqlInfo[] ConvertToIndex(Expression expression, int level, ConvertFlags flags)
+			public SqlInfo[] ConvertToIndex(Expression? expression, int level, ConvertFlags flags)
 			{
 				throw new NotImplementedException();
 			}
 
-			public IsExpressionResult IsExpression(Expression expression, int level, RequestFor requestFlag)
+			public IsExpressionResult IsExpression(Expression? expression, int level, RequestFor requestFlag)
 			{
 				switch (requestFlag)
 				{
@@ -112,12 +112,12 @@ namespace LinqToDB.Linq.Builder
 				}
 			}
 
-			public IBuildContext GetContext(Expression expression, int level, BuildInfo buildInfo)
+			public IBuildContext GetContext(Expression? expression, int level, BuildInfo buildInfo)
 			{
 				throw new NotImplementedException();
 			}
 
-			public int ConvertToParentIndex(int index, IBuildContext context)
+			public int ConvertToParentIndex(int index, IBuildContext? context)
 			{
 				return Parent?.ConvertToParentIndex(index, context) ?? index;
 			}
@@ -126,7 +126,7 @@ namespace LinqToDB.Linq.Builder
 			{
 			}
 
-			public ISqlExpression GetSubQuery(IBuildContext context)
+			public ISqlExpression? GetSubQuery(IBuildContext? context)
 			{
 				return null;
 			}

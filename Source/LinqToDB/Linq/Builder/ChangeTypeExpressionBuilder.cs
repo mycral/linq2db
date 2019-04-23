@@ -29,7 +29,7 @@ namespace LinqToDB.Linq.Builder
 			return GetBuilder(builder, info).BuildSequence(builder, info);
 		}
 
-		public SequenceConvertInfo Convert(ExpressionBuilder builder, BuildInfo buildInfo, ParameterExpression param)
+		public SequenceConvertInfo? Convert(ExpressionBuilder builder, BuildInfo buildInfo, ParameterExpression param)
 		{
 			return null;
 		}

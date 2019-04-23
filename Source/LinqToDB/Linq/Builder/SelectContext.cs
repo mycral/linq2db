@@ -265,7 +265,7 @@ namespace LinqToDB.Linq.Builder
 
 		readonly Dictionary<MemberInfo,SqlInfo[]> _sql = new Dictionary<MemberInfo,SqlInfo[]>(new MemberInfoComparer());
 
-		public virtual SqlInfo[] ConvertToSql(Expression expression, int level, ConvertFlags flags)
+		public virtual SqlInfo[] ConvertToSql(Expression? expression, int level, ConvertFlags flags)
 		{
 			if (expression != null && level > 0 && expression.NodeType == ExpressionType.Call)
 			{
@@ -424,7 +424,7 @@ namespace LinqToDB.Linq.Builder
 
 		readonly Dictionary<Tuple<Expression,int,ConvertFlags>,SqlInfo[]> _expressionIndex = new Dictionary<Tuple<Expression,int,ConvertFlags>,SqlInfo[]>();
 
-		public virtual SqlInfo[] ConvertToIndex(Expression expression, int level, ConvertFlags flags)
+		public virtual SqlInfo[] ConvertToIndex(Expression? expression, int level, ConvertFlags flags)
 		{
 			var key = Tuple.Create(expression, level, flags);
 
@@ -614,7 +614,7 @@ namespace LinqToDB.Linq.Builder
 		Expression _lastAssociationExpression;
 		int        _lastAssociationLevel = -1;
 
-		public virtual IsExpressionResult IsExpression(Expression expression, int level, RequestFor requestFlag)
+		public virtual IsExpressionResult IsExpression(Expression? expression, int level, RequestFor requestFlag)
 		{
 			switch (requestFlag)
 			{
@@ -777,7 +777,7 @@ namespace LinqToDB.Linq.Builder
 
 		#region GetContext
 
-		public virtual IBuildContext GetContext(Expression expression, int level, BuildInfo buildInfo)
+		public virtual IBuildContext GetContext(Expression? expression, int level, BuildInfo buildInfo)
 		{
 			if (expression == null)
 				return this;
@@ -854,7 +854,7 @@ namespace LinqToDB.Linq.Builder
 
 		#region ConvertToParentIndex
 
-		public virtual int ConvertToParentIndex(int index, IBuildContext context)
+		public virtual int ConvertToParentIndex(int index, IBuildContext? context)
 		{
 			if (!ReferenceEquals(context.SelectQuery, SelectQuery))
 				index = SelectQuery.Select.Add(context.SelectQuery.Select.Columns[index]);
@@ -878,7 +878,7 @@ namespace LinqToDB.Linq.Builder
 
 		#region GetSubQuery
 
-		public ISqlExpression GetSubQuery(IBuildContext context)
+		public ISqlExpression? GetSubQuery(IBuildContext? context)
 		{
 			return null;
 		}

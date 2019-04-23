@@ -30,8 +30,8 @@ namespace LinqToDB.Linq.Builder
 			return new ContainsContext(buildInfo.Parent, methodCall, sequence, buildInStatement);
 		}
 
-		protected override SequenceConvertInfo Convert(
-			ExpressionBuilder builder, MethodCallExpression methodCall, BuildInfo buildInfo, ParameterExpression param)
+		protected override SequenceConvertInfo? Convert(
+			ExpressionBuilder builder, MethodCallExpression methodCall, BuildInfo buildInfo, ParameterExpression? param)
 		{
 			return null;
 		}
@@ -71,13 +71,13 @@ namespace LinqToDB.Linq.Builder
 				QueryRunner.SetRunQuery(query, mapper);
 			}
 
-			public override Expression BuildExpression(Expression expression, int level, bool enforceServerSide)
+			public override Expression BuildExpression(Expression? expression, int level, bool enforceServerSide)
 			{
 				var idx = ConvertToIndex(expression, level, ConvertFlags.Field);
 				return Builder.BuildSql(typeof(bool), idx[0].Index);
 			}
 
-			public override SqlInfo[] ConvertToSql(Expression expression, int level, ConvertFlags flags)
+			public override SqlInfo[] ConvertToSql(Expression? expression, int level, ConvertFlags flags)
 			{
 				if (expression == null)
 				{
@@ -93,7 +93,7 @@ namespace LinqToDB.Linq.Builder
 				throw new InvalidOperationException();
 			}
 
-			public override SqlInfo[] ConvertToIndex(Expression expression, int level, ConvertFlags flags)
+			public override SqlInfo[] ConvertToIndex(Expression? expression, int level, ConvertFlags flags)
 			{
 				var sql = ConvertToSql(expression, level, flags);
 
@@ -103,7 +103,7 @@ namespace LinqToDB.Linq.Builder
 				return sql;
 			}
 
-			public override IsExpressionResult IsExpression(Expression expression, int level, RequestFor requestFlag)
+			public override IsExpressionResult IsExpression(Expression? expression, int level, RequestFor requestFlag)
 			{
 				if (expression == null)
 				{
@@ -122,14 +122,14 @@ namespace LinqToDB.Linq.Builder
 				throw new InvalidOperationException();
 			}
 
-			public override IBuildContext GetContext(Expression expression, int level, BuildInfo buildInfo)
+			public override IBuildContext GetContext(Expression? expression, int level, BuildInfo buildInfo)
 			{
 				throw new InvalidOperationException();
 			}
 
 			ISqlExpression _subQuerySql;
 
-			public override ISqlExpression GetSubQuery(IBuildContext context)
+			public override ISqlExpression? GetSubQuery(IBuildContext? context)
 			{
 				if (_subQuerySql == null)
 				{

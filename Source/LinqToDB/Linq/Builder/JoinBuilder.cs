@@ -192,8 +192,8 @@ namespace LinqToDB.Linq.Builder
 			return subQueryContext;
 		}
 
-		protected override SequenceConvertInfo Convert(
-			ExpressionBuilder builder, MethodCallExpression methodCall, BuildInfo buildInfo, ParameterExpression param)
+		protected override SequenceConvertInfo? Convert(
+			ExpressionBuilder builder, MethodCallExpression methodCall, BuildInfo buildInfo, ParameterExpression? param)
 		{
 			return null;
 		}
@@ -253,7 +253,7 @@ namespace LinqToDB.Linq.Builder
 			{
 			}
 
-			public override SqlInfo[] ConvertToSql(Expression expression, int level, ConvertFlags flags)
+			public override SqlInfo[] ConvertToSql(Expression? expression, int level, ConvertFlags flags)
 			{
 				return base
 					.ConvertToSql(expression, level, flags)
@@ -402,7 +402,7 @@ namespace LinqToDB.Linq.Builder
 				}
 			}
 
-			public override Expression BuildExpression(Expression expression, int level, bool enforceServerSide)
+			public override Expression BuildExpression(Expression? expression, int level, bool enforceServerSide)
 			{
 				if (ReferenceEquals(expression, Lambda.Parameters[1]))
 				{
@@ -475,7 +475,7 @@ namespace LinqToDB.Linq.Builder
 			{
 			}
 
-			public override IBuildContext GetContext(Expression expression, int level, BuildInfo buildInfo)
+			public override IBuildContext GetContext(Expression? expression, int level, BuildInfo buildInfo)
 			{
 				if (expression == null)
 				{
@@ -493,7 +493,7 @@ namespace LinqToDB.Linq.Builder
 				return base.GetContext(expression, level, buildInfo);
 			}
 
-			public override IsExpressionResult IsExpression(Expression expression, int level, RequestFor testFlag)
+			public override IsExpressionResult IsExpression(Expression? expression, int level, RequestFor testFlag)
 			{
 				if (testFlag == RequestFor.GroupJoin && expression == null)
 					return IsExpressionResult.True;

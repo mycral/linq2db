@@ -33,8 +33,8 @@ namespace LinqToDB.Linq.Builder
 			return new DefaultIfEmptyContext(buildInfo.Parent, sequence, defaultValue);
 		}
 
-		protected override SequenceConvertInfo Convert(
-			ExpressionBuilder builder, MethodCallExpression methodCall, BuildInfo buildInfo, ParameterExpression param)
+		protected override SequenceConvertInfo? Convert(
+			ExpressionBuilder builder, MethodCallExpression methodCall, BuildInfo buildInfo, ParameterExpression? param)
 		{
 			return null;
 		}
@@ -49,7 +49,7 @@ namespace LinqToDB.Linq.Builder
 
 			private readonly Expression _defaultValue;
 
-			public override Expression BuildExpression(Expression expression, int level, bool enforceServerSide)
+			public override Expression BuildExpression(Expression? expression, int level, bool enforceServerSide)
 			{
 				var expr = Sequence.BuildExpression(expression, level, enforceServerSide);
 
@@ -107,22 +107,22 @@ namespace LinqToDB.Linq.Builder
 				return expr;
 			}
 
-			public override SqlInfo[] ConvertToSql(Expression expression, int level, ConvertFlags flags)
+			public override SqlInfo[] ConvertToSql(Expression? expression, int level, ConvertFlags flags)
 			{
 				return Sequence.ConvertToSql(expression, level, flags);
 			}
 
-			public override SqlInfo[] ConvertToIndex(Expression expression, int level, ConvertFlags flags)
+			public override SqlInfo[] ConvertToIndex(Expression? expression, int level, ConvertFlags flags)
 			{
 				return Sequence.ConvertToIndex(expression, level, flags);
 			}
 
-			public override IsExpressionResult IsExpression(Expression expression, int level, RequestFor requestFlag)
+			public override IsExpressionResult IsExpression(Expression? expression, int level, RequestFor requestFlag)
 			{
 				return Sequence.IsExpression(expression, level, requestFlag);
 			}
 
-			public override IBuildContext GetContext(Expression expression, int level, BuildInfo buildInfo)
+			public override IBuildContext GetContext(Expression? expression, int level, BuildInfo buildInfo)
 			{
 				return Sequence.GetContext(expression, level, buildInfo);
 			}

@@ -656,12 +656,12 @@ namespace LinqToDB.Linq.Builder
 
 			#region BuildExpression
 
-			public virtual Expression BuildExpression(Expression expression, int level, bool enforceServerSide)
+			public virtual Expression BuildExpression(Expression? expression, int level, bool enforceServerSide)
 			{
 				return BuildExpression(expression, level, null);
 			}
 
-			Expression BuildExpression(Expression expression, int level, ParameterExpression parentObject)
+			Expression BuildExpression(Expression? expression, int level, ParameterExpression? parentObject)
 			{
 				// Build table.
 				//
@@ -697,7 +697,7 @@ namespace LinqToDB.Linq.Builder
 
 			#region ConvertToSql
 
-			public virtual SqlInfo[] ConvertToSql(Expression expression, int level, ConvertFlags flags)
+			public virtual SqlInfo[] ConvertToSql(Expression? expression, int level, ConvertFlags flags)
 			{
 				switch (flags)
 				{
@@ -783,7 +783,7 @@ namespace LinqToDB.Linq.Builder
 				return expr;
 			}
 
-			public virtual SqlInfo[] ConvertToIndex(Expression expression, int level, ConvertFlags flags)
+			public virtual SqlInfo[] ConvertToIndex(Expression? expression, int level, ConvertFlags flags)
 			{
 				switch (flags)
 				{
@@ -806,7 +806,7 @@ namespace LinqToDB.Linq.Builder
 
 			#region IsExpression
 
-			public virtual IsExpressionResult IsExpression(Expression expression, int level, RequestFor requestFor)
+			public virtual IsExpressionResult IsExpression(Expression? expression, int level, RequestFor requestFor)
 			{
 				switch (requestFor)
 				{
@@ -978,7 +978,7 @@ namespace LinqToDB.Linq.Builder
 				}
 			}
 
-			public IBuildContext GetContext(Expression expression, int level, BuildInfo buildInfo)
+			public IBuildContext GetContext(Expression? expression, int level, BuildInfo buildInfo)
 			{
 				if (expression == null)
 				{
@@ -1054,7 +1054,7 @@ namespace LinqToDB.Linq.Builder
 
 			#region ConvertToParentIndex
 
-			public virtual int ConvertToParentIndex(int index, IBuildContext context)
+			public virtual int ConvertToParentIndex(int index, IBuildContext? context)
 			{
 				return Parent?.ConvertToParentIndex(index, this) ?? index;
 			}
@@ -1077,7 +1077,7 @@ namespace LinqToDB.Linq.Builder
 
 			#region GetSubQuery
 
-			public ISqlExpression GetSubQuery(IBuildContext context)
+			public ISqlExpression? GetSubQuery(IBuildContext? context)
 			{
 				return null;
 			}

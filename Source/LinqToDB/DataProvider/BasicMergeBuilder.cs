@@ -1518,7 +1518,7 @@ namespace LinqToDB.DataProvider
 			return buildInfo.Expression is MethodCallExpression call && call.Method.Name == "GetMergeContext";
 		}
 
-		public SequenceConvertInfo Convert(ExpressionBuilder builder, BuildInfo buildInfo, ParameterExpression param)
+		public SequenceConvertInfo? Convert(ExpressionBuilder builder, BuildInfo buildInfo, ParameterExpression param)
 		{
 			return null;
 		}

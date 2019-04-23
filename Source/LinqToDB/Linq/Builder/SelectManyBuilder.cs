@@ -230,8 +230,8 @@ namespace LinqToDB.Linq.Builder
 			return new SqlFromClause.Join(joinType, sql, null, false, null);
 		}
 
-		protected override SequenceConvertInfo Convert(
-			ExpressionBuilder builder, MethodCallExpression methodCall, BuildInfo buildInfo, ParameterExpression param)
+		protected override SequenceConvertInfo? Convert(
+			ExpressionBuilder builder, MethodCallExpression methodCall, BuildInfo buildInfo, ParameterExpression? param)
 		{
 			return null;
 		}
@@ -254,7 +254,7 @@ namespace LinqToDB.Linq.Builder
 				}
 			}
 
-			public override Expression BuildExpression(Expression expression, int level, bool enforceServerSide)
+			public override Expression BuildExpression(Expression? expression, int level, bool enforceServerSide)
 			{
 				if (expression == null)
 					return Collection.BuildExpression(expression, level, enforceServerSide);
@@ -275,7 +275,7 @@ namespace LinqToDB.Linq.Builder
 				throw new NotImplementedException();
 			}
 
-			public override SqlInfo[] ConvertToIndex(Expression expression, int level, ConvertFlags flags)
+			public override SqlInfo[] ConvertToIndex(Expression? expression, int level, ConvertFlags flags)
 			{
 				if (Collection != null)
 				{
@@ -291,7 +291,7 @@ namespace LinqToDB.Linq.Builder
 				return base.ConvertToIndex(expression, level, flags);
 			}
 
-			public override SqlInfo[] ConvertToSql(Expression expression, int level, ConvertFlags flags)
+			public override SqlInfo[] ConvertToSql(Expression? expression, int level, ConvertFlags flags)
 			{
 				if (Collection != null)
 				{
@@ -307,7 +307,7 @@ namespace LinqToDB.Linq.Builder
 				return base.ConvertToSql(expression, level, flags);
 			}
 
-			public override IBuildContext GetContext(Expression expression, int level, BuildInfo buildInfo)
+			public override IBuildContext GetContext(Expression? expression, int level, BuildInfo buildInfo)
 			{
 				if (Collection != null)
 				{
@@ -323,7 +323,7 @@ namespace LinqToDB.Linq.Builder
 				return base.GetContext(expression, level, buildInfo);
 			}
 
-			public override IsExpressionResult IsExpression(Expression expression, int level, RequestFor requestFlag)
+			public override IsExpressionResult IsExpression(Expression? expression, int level, RequestFor requestFlag)
 			{
 				if (Collection != null)
 				{

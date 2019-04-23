@@ -31,32 +31,32 @@ namespace LinqToDB.Linq.Builder
 			Context.BuildQuery(query, queryParameter);
 		}
 
-		public virtual Expression BuildExpression(Expression expression, int level, bool enforceServerSide)
+		public virtual Expression BuildExpression(Expression? expression, int level, bool enforceServerSide)
 		{
 			return Context.BuildExpression(expression, level, enforceServerSide);
 		}
 
-		public virtual SqlInfo[] ConvertToSql(Expression expression, int level, ConvertFlags flags)
+		public virtual SqlInfo[] ConvertToSql(Expression? expression, int level, ConvertFlags flags)
 		{
 			return Context.ConvertToSql(expression, level, flags);
 		}
 
-		public virtual SqlInfo[] ConvertToIndex(Expression expression, int level, ConvertFlags flags)
+		public virtual SqlInfo[] ConvertToIndex(Expression? expression, int level, ConvertFlags flags)
 		{
 			return Context.ConvertToIndex(expression, level, flags);
 		}
 
-		public virtual IsExpressionResult IsExpression(Expression expression, int level, RequestFor requestFlag)
+		public virtual IsExpressionResult IsExpression(Expression? expression, int level, RequestFor requestFlag)
 		{
 			return Context.IsExpression(expression, level, requestFlag);
 		}
 
-		public virtual IBuildContext GetContext(Expression expression, int level, BuildInfo buildInfo)
+		public virtual IBuildContext GetContext(Expression? expression, int level, BuildInfo buildInfo)
 		{
 			return Context.GetContext(expression, level, buildInfo);
 		}
 
-		public virtual int ConvertToParentIndex(int index, IBuildContext context)
+		public virtual int ConvertToParentIndex(int index, IBuildContext? context)
 		{
 			return Context.ConvertToParentIndex(index, context);
 		}
@@ -66,7 +66,7 @@ namespace LinqToDB.Linq.Builder
 			Context.SetAlias(alias);
 		}
 
-		public virtual ISqlExpression GetSubQuery(IBuildContext context)
+		public virtual ISqlExpression? GetSubQuery(IBuildContext? context)
 		{
 			return Context.GetSubQuery(context);
 		}

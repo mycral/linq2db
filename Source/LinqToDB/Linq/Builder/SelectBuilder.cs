@@ -99,7 +99,7 @@ namespace LinqToDB.Linq.Builder
 				QueryRunner.SetRunQuery(query, mapper);
 			}
 
-			public override IsExpressionResult IsExpression(Expression expression, int level, RequestFor requestFlag)
+			public override IsExpressionResult IsExpression(Expression? expression, int level, RequestFor requestFlag)
 			{
 				switch (requestFlag)
 				{
@@ -113,7 +113,7 @@ namespace LinqToDB.Linq.Builder
 				return base.IsExpression(expression, level, requestFlag);
 			}
 
-			public override Expression BuildExpression(Expression expression, int level, bool enforceServerSide)
+			public override Expression BuildExpression(Expression? expression, int level, bool enforceServerSide)
 			{
 				if (expression == Lambda.Parameters[1])
 					return _counterParam;
@@ -126,8 +126,8 @@ namespace LinqToDB.Linq.Builder
 
 		#region Convert
 
-		protected override SequenceConvertInfo Convert(
-			ExpressionBuilder builder, MethodCallExpression originalMethodCall, BuildInfo buildInfo, ParameterExpression param)
+		protected override SequenceConvertInfo? Convert(
+			ExpressionBuilder builder, MethodCallExpression originalMethodCall, BuildInfo buildInfo, ParameterExpression? param)
 		{
 			var methodCall = originalMethodCall;
 			var selector   = (LambdaExpression)methodCall.Arguments[1].Unwrap();

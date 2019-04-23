@@ -17,8 +17,8 @@ namespace LinqToDB.Linq.Builder
 			return builder.BuildSequence(new BuildInfo(buildInfo, methodCall.Arguments[0]));
 		}
 
-		protected override SequenceConvertInfo Convert(
-			ExpressionBuilder builder, MethodCallExpression methodCall, BuildInfo buildInfo, ParameterExpression param)
+		protected override SequenceConvertInfo? Convert(
+			ExpressionBuilder builder, MethodCallExpression methodCall, BuildInfo buildInfo, ParameterExpression? param)
 		{
 			return null;
 		}

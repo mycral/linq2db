@@ -31,8 +31,8 @@ namespace LinqToDB.Linq.Builder
 			return new UnionContext(sequence1, sequence2, methodCall);
 		}
 
-		protected override SequenceConvertInfo Convert(
-			ExpressionBuilder builder, MethodCallExpression methodCall, BuildInfo buildInfo, ParameterExpression param)
+		protected override SequenceConvertInfo? Convert(
+			ExpressionBuilder builder, MethodCallExpression methodCall, BuildInfo buildInfo, ParameterExpression? param)
 		{
 			return null;
 		}
@@ -210,7 +210,7 @@ namespace LinqToDB.Linq.Builder
 				QueryRunner.SetRunQuery(query, mapper);
 			}
 
-			public override Expression BuildExpression(Expression expression, int level, bool enforceServerSide)
+			public override Expression BuildExpression(Expression? expression, int level, bool enforceServerSide)
 			{
 				if (_isObject)
 				{
@@ -325,7 +325,7 @@ namespace LinqToDB.Linq.Builder
 				return ret;
 			}
 
-			public override IsExpressionResult IsExpression(Expression expression, int level, RequestFor testFlag)
+			public override IsExpressionResult IsExpression(Expression? expression, int level, RequestFor testFlag)
 			{
 				if (testFlag == RequestFor.Root && ReferenceEquals(expression, _unionParameter))
 					return IsExpressionResult.True;
@@ -333,7 +333,7 @@ namespace LinqToDB.Linq.Builder
 				return base.IsExpression(expression, level, testFlag);
 			}
 
-			public override SqlInfo[] ConvertToIndex(Expression expression, int level, ConvertFlags flags)
+			public override SqlInfo[] ConvertToIndex(Expression? expression, int level, ConvertFlags flags)
 			{
 				if (_isObject)
 				{
@@ -361,7 +361,7 @@ namespace LinqToDB.Linq.Builder
 				return base.ConvertToIndex(expression, level, flags);
 			}
 
-			public override SqlInfo[] ConvertToSql(Expression expression, int level, ConvertFlags flags)
+			public override SqlInfo[] ConvertToSql(Expression? expression, int level, ConvertFlags flags)
 			{
 				if (_isObject)
 				{

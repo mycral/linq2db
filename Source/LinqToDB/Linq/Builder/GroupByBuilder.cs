@@ -99,8 +99,8 @@ namespace LinqToDB.Linq.Builder
 			return groupBy;
 		}
 
-		protected override SequenceConvertInfo Convert(
-			ExpressionBuilder builder, MethodCallExpression methodCall, BuildInfo buildInfo, ParameterExpression param)
+		protected override SequenceConvertInfo? Convert(
+			ExpressionBuilder builder, MethodCallExpression methodCall, BuildInfo buildInfo, ParameterExpression? param)
 		{
 			return null;
 		}
@@ -126,27 +126,27 @@ namespace LinqToDB.Linq.Builder
 				base.BuildQuery(query, queryParameter);
 			}
 
-			public override SqlInfo[] ConvertToSql(Expression expression, int level, ConvertFlags flags)
+			public override SqlInfo[] ConvertToSql(Expression? expression, int level, ConvertFlags flags)
 			{
 				return base.ConvertToSql(expression, level, flags);
 			}
 
-			public override SqlInfo[] ConvertToIndex(Expression expression, int level, ConvertFlags flags)
+			public override SqlInfo[] ConvertToIndex(Expression? expression, int level, ConvertFlags flags)
 			{
 				return base.ConvertToIndex(expression, level, flags);
 			}
 
-			public override int ConvertToParentIndex(int index, IBuildContext context)
+			public override int ConvertToParentIndex(int index, IBuildContext? context)
 			{
 				return base.ConvertToParentIndex(index, context);
 			}
 
-			public override IsExpressionResult IsExpression(Expression expression, int level, RequestFor requestFlag)
+			public override IsExpressionResult IsExpression(Expression? expression, int level, RequestFor requestFlag)
 			{
 				return base.IsExpression(expression, level, requestFlag);
 			}
 
-			public override IBuildContext GetContext(Expression expression, int level, BuildInfo buildInfo)
+			public override IBuildContext GetContext(Expression? expression, int level, BuildInfo buildInfo)
 			{
 				return base.GetContext(expression, level, buildInfo);
 			}
@@ -382,7 +382,7 @@ namespace LinqToDB.Linq.Builder
 				return expr;
 			}
 
-			public override Expression BuildExpression(Expression expression, int level, bool enforceServerSide)
+			public override Expression BuildExpression(Expression? expression, int level, bool enforceServerSide)
 			{
 				if (expression == null)
 					return BuildGrouping();
@@ -537,7 +537,7 @@ namespace LinqToDB.Linq.Builder
 
 			PropertyInfo _keyProperty;
 
-			public override SqlInfo[] ConvertToSql(Expression expression, int level, ConvertFlags flags)
+			public override SqlInfo[] ConvertToSql(Expression? expression, int level, ConvertFlags flags)
 			{
 				if (expression == null)
 					return _key.ConvertToSql(null, 0, flags);
@@ -594,7 +594,7 @@ namespace LinqToDB.Linq.Builder
 			readonly Dictionary<Tuple<Expression,int,ConvertFlags>,SqlInfo[]> _expressionIndex =
 				new Dictionary<Tuple<Expression,int,ConvertFlags>,SqlInfo[]>();
 
-			public override SqlInfo[] ConvertToIndex(Expression expression, int level, ConvertFlags flags)
+			public override SqlInfo[] ConvertToIndex(Expression? expression, int level, ConvertFlags flags)
 			{
 				var key = Tuple.Create(expression, level, flags);
 
@@ -614,7 +614,7 @@ namespace LinqToDB.Linq.Builder
 				return info;
 			}
 
-			public override IsExpressionResult IsExpression(Expression expression, int level, RequestFor requestFlag)
+			public override IsExpressionResult IsExpression(Expression? expression, int level, RequestFor requestFlag)
 			{
 				if (level != 0)
 				{
@@ -639,7 +639,7 @@ namespace LinqToDB.Linq.Builder
 				return IsExpressionResult.False;
 			}
 
-			public override int ConvertToParentIndex(int index, IBuildContext context)
+			public override int ConvertToParentIndex(int index, IBuildContext? context)
 			{
 				var expr = SelectQuery.Select.Columns[index].Expression;
 
@@ -668,7 +668,7 @@ namespace LinqToDB.Linq.Builder
 				}
 			}
 
-			public override IBuildContext GetContext(Expression expression, int level, BuildInfo buildInfo)
+			public override IBuildContext GetContext(Expression? expression, int level, BuildInfo buildInfo)
 			{
 				if (expression == null && buildInfo != null)
 				{

@@ -25,12 +25,12 @@ namespace LinqToDB.Linq.Builder
 			SelectQuery = selectQuery;
 		}
 
-		public override Expression BuildExpression(Expression expression, int level, bool enforceServerSide)
+		public override Expression BuildExpression(Expression? expression, int level, bool enforceServerSide)
 		{
 			throw new InvalidOperationException();
 		}
 
-		public override SqlInfo[] ConvertToSql(Expression expression, int level, ConvertFlags flags)
+		public override SqlInfo[] ConvertToSql(Expression? expression, int level, ConvertFlags flags)
 		{
 			if (level == 0)
 			{
@@ -75,12 +75,12 @@ namespace LinqToDB.Linq.Builder
 			throw new InvalidOperationException();
 		}
 
-		public override SqlInfo[] ConvertToIndex(Expression expression, int level, ConvertFlags flags)
+		public override SqlInfo[] ConvertToIndex(Expression? expression, int level, ConvertFlags flags)
 		{
 			throw new InvalidOperationException();
 		}
 
-		public override IsExpressionResult IsExpression(Expression expression, int level, RequestFor requestFlag)
+		public override IsExpressionResult IsExpression(Expression? expression, int level, RequestFor requestFlag)
 		{
 			switch (requestFlag)
 			{
@@ -125,7 +125,7 @@ namespace LinqToDB.Linq.Builder
 			return IsExpressionResult.False;
 		}
 
-		public override IBuildContext GetContext(Expression expression, int level, BuildInfo buildInfo)
+		public override IBuildContext GetContext(Expression? expression, int level, BuildInfo buildInfo)
 		{
 			var root = expression.GetRootObject(Builder.MappingSchema);
 

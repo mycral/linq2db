@@ -221,7 +221,7 @@ namespace LinqToDB.Linq.Builder
 					base.BuildQuery(query, queryParameter);
 			}
 
-			public override SqlInfo[] ConvertToSql(Expression expression, int level, ConvertFlags flags)
+			public override SqlInfo[] ConvertToSql(Expression? expression, int level, ConvertFlags flags)
 			{
 				if (_innerContext != null)
 					return _innerContext.ConvertToSql(expression, level, flags);
@@ -229,7 +229,7 @@ namespace LinqToDB.Linq.Builder
 				return base.ConvertToSql(expression, level, flags);
 			}
 
-			public override SqlInfo[] ConvertToIndex(Expression expression, int level, ConvertFlags flags)
+			public override SqlInfo[] ConvertToIndex(Expression? expression, int level, ConvertFlags flags)
 			{
 				if (_innerContext != null)
 				{
@@ -250,7 +250,7 @@ namespace LinqToDB.Linq.Builder
 				}); 
 			}
 
-			public override int ConvertToParentIndex(int index, IBuildContext context)
+			public override int ConvertToParentIndex(int index, IBuildContext? context)
 			{
 				if (_innerContext != null)
 				{
@@ -261,7 +261,7 @@ namespace LinqToDB.Linq.Builder
 				return base.ConvertToParentIndex(index, context);
 			}
 
-			public override Expression BuildExpression(Expression expression, int level, bool enforceServerSide)
+			public override Expression BuildExpression(Expression? expression, int level, bool enforceServerSide)
 			{
 				if (_innerContext != null)
 					return _innerContext.BuildExpression(expression, level, enforceServerSide);
