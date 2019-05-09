@@ -1,3 +1,4 @@
+学习可以看wiki开始 https://github.com/linq2db/linq2db/wiki
 # LINQ to DB
 
 [![NuGet Version and Downloads count](https://buildstats.info/nuget/linq2db)](https://www.nuget.org/profiles/LinqToDB)
